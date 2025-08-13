@@ -14,18 +14,5 @@ export default defineConfig({
     //   filename: 'bundle-analysis.html' // Output filename
     // })
   ],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          // Split vendor modules into separate chunks
-          react: ['react', 'react-dom'],
-          firebase: ['firebase/app', 'firebase/firestore', 'firebase/auth'],
-          // Add other large dependencies here
-        }
-      }
-    }
-  }
-
 
 });

@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links }) => {
 
   return (
     <header className="bg- text- fixed w-full shadow- z-50">
-      <div className="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
+      <div className="mx-auto px-10 flex justify-between items-center h-16">
         
         {/* Avatar */}
         <div className="flex items-center space-x-2">
