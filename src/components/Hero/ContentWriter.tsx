@@ -22,8 +22,8 @@ function Hero() {
 function Text() {
   return (
     <div className="w-full md:w-1/2 text-center">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-        Content Writer
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      Content Writer
       </h2>
       <p className="text-gray-200 leading-relaxed sm:leading-8 text-base sm:text-lg">
         Former <span className="font-semibold">Content Writer</span> at TEDX

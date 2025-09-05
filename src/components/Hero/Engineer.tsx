@@ -26,7 +26,7 @@ function Text() {
       <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
         Chemical Engineer
       </h2>
-      <p className="text-gray-200 leading-8 text-lg">
+      <p className="text-gray-200 leading-8 text-base sm:text-lg">
         I’m a highly motivated{" "}
         <span className="font-semibold">Chemical Engineer</span>, fresh graduate
         with <span className="font-semibold">1+ years</span> of training and
