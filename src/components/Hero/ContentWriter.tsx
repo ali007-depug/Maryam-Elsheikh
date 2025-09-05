@@ -6,8 +6,8 @@ export default function ContentWriter() {
 
 function Hero() {
   return (
-    <section className="flex flex-col items-center  bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded shadow-lg min-h-[60dvh] md:min-h-[90dvh]">
-      <div className="flex flex-col md:flex-row justify-between gap-8 sm:gap-10 px-4 sm:px-8 py-10 sm:py-12">
+    <section className="flex flex-col items-center  bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded shadow-lg py-8 ">
+      <div className="flex flex-col md:flex-row justify-between gap-10 sm:gap-10 px-4 sm:px-8 py-10 sm:py-12">
         {/* text */}
         <Text />
         {/* img */}
@@ -21,7 +21,7 @@ function Hero() {
 
 function Text() {
   return (
-    <div className="w-full md:w-1/2 text-center md:text-center">
+    <div className="w-full md:w-1/2 text-center">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
         Content Writer
       </h2>
@@ -50,7 +50,7 @@ function Text() {
 
 function Img() {
   return (
-    <div className="relative flex justify-center items-center self-start">
+    <div className="relative bg-ed-200 self-start w-fit mx-auto flex justify-center items-center">
       {/* background glow */}
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}

@@ -6,8 +6,8 @@ export default function Engineer() {
 
 function Hero() {
   return (
-    <section className="flex flex-col  items-center  bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800 rounded shadow-lg h-[80dvh]">
-        <div className="flex flex-col md:flex-row  justify-between gap-10 px-8 py-12">
+    <section className="flex flex-col  items-center  bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800 rounded shadow-lg py-8 ">
+        <div className="flex flex-col md:flex-row justify-between gap-10 px-8 py-12">
       {/* text */}
       <Text />
       {/* img */}
@@ -40,7 +40,7 @@ function Text() {
 
 function Img() {
   return (
-    <div className="relative flex justify-center items-center">
+    <div className="relative  w-fit mx-auto flex justify-center items-center">
       {/* background glow */}
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}
