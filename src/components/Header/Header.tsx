@@ -5,16 +5,17 @@ interface HeaderProps {
   name: string;
   avatarSrc?: string;
   links: { label: string; href: string }[];
+  portfolioType:string;
 }
 
-const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links }) => {
+const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="bg- text- fixed w-full shadow- z-50">
-      <div className="mx-auto px-10 flex justify-between items-center h-16">
+    <header className="text- px-10 fixed w-full z-3 bg-white overflow-hidden">
+      <div className="mx-auto flex justify-between items-center h-16">
         
         {/* Avatar */}
         <div className="flex items-center space-x-2">
@@ -29,7 +30,10 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links }) => {
               {name.charAt(0).toUpperCase()}
             </div>
           )}
-          <span className="font-semibold">{name}</span>
+          <div className="flex flex-col">
+          <span className="font-bold text-orange600">{name}</span>
+          <span className="font-semibold text-xs text-orange-00">{portfolioType}</span>
+          </div>
         </div>
 
         {/* Desktop Links */}
