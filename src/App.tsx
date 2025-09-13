@@ -2,6 +2,9 @@ import { useState, type ChangeEvent } from "react";
 
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
+import About from "./components/AboutMe/About";
+import WorkExperience from "./components/Work/WorkExperience";
+import WorkExperienceWriter from "./components/Work/WorkExperienceWriter";
 function App() {
 
   const [portfolioType,setPortfolioType]=useState("Chemical Engineer");
@@ -26,10 +29,15 @@ function App() {
   ];
   return (
     <div className="min-h-[100dvh]">
-      
+      {/* header */}
       <Header name="Maryam Elsheikh" links={headerMenu} avatarSrc="avatar2.jpg" portfolioType={portfolioType}/>
-
+      {/* hero */}
       <Hero portfolioType={portfolioType} handlePortfolioType={handlePortfolioType}/>
+    {/* about */}
+    <About/>
+
+    {/* work experience */}
+    {portfolioType ==="Chemical Engineer" ? <WorkExperience/> : <WorkExperienceWriter/>}
     </div>
   );
 }

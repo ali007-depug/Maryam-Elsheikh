@@ -93,10 +93,10 @@ function Buttons() {
     <div className="flex gap-10">
         {/* download cv */}
         <a
-          href="/maryam_enginner_Cv.pdf"
+          href="maryam_enginner_Cv.pdf"
           download="maryam_enginner_Cv.pdf"
           className="px-4 py-5 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-600 transition-all duration-300 ease-in-out"
-        >Download CV 📰</a>
+        >Download My CV 📰</a>
       {/* explore */}
       <button>
         <a

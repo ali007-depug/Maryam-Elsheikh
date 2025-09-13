@@ -107,11 +107,11 @@ function Buttons() {
       {/* download cv */}
       <button>
         <a
-          href="/maryam_elsheikh_content_writer_Cv.pdf"
+          href="maryam_elsheikh_content_writer_Cv.pdf"
           download="maryam_elsheikh_content_writer_Cv.pdf"
           className="px-4 py-5 bg-white font-semibold rounded-lg shadow-md hover:bg-gray-200 hover:text-black transition-all duration-300 ease-in-out"
         >
-          Download CV 📎
+          Download My CV 📎
         </a>
       </button>
       {/* explore */}

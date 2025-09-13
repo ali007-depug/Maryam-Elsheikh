@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType })
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="text- px-10 fixed w-full z-3 bg-white overflow-hidden">
+    <header className="text- px-10  w-full z-3 bg-white overflow-hidden">
       <div className="mx-auto flex justify-between items-center h-16">
         
         {/* Avatar */}

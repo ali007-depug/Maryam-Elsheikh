@@ -11,7 +11,7 @@ export default function Hero({
   handlePortfolioType,
 }: HeroProps) {
   return (
-    <div className={`relative top-18 w-full min-h-[90dvh] z-1 ${portfolioType === "Chemical Engineer" ? "bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800" : "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700" }`}>
+    <div className={`relative  w-full min-h-[90dvh] z-1 ${portfolioType === "Chemical Engineer" ? "bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800" : "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700" }`}>
       <div className="flex flex-col items-center justify-center gap-5 mb-10">
         {/* select wrapper */}
         <div className="flex flex-col md:flex-row gap-3 md:gap-2 items-start md:items-center mt-10">
