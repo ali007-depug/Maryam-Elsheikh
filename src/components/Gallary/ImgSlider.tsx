@@ -102,7 +102,7 @@ export default function ImgSlider() {
 
   return (
     <div className="lg:max-w-6xl  mx-auto py-16 px-6">
-      <div className="relative w-full h-[500px] overflow-hidden rounded-2xl shadow-lg bg-gray-200 bg-gray-900">
+      <div className="relative w-full h-[500px] overflow-hidden rounded-2xl shadow-lg bg-gray-900">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
