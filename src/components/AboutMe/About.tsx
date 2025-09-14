@@ -2,7 +2,7 @@ export default function About() {
     return (
       <section
         id="about"
-        className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20"
+        className="max-w-4xl flex flex-col justify-center items-center mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20"
       >
         {/* Heading wrapper */}
         <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
@@ -40,6 +40,20 @@ export default function About() {
             just want to chat about engineering, feel free to reach out.
           </p>
         </div>
+        {/* linked in button */}
+
+          <button className="flex items-center justify-center gap-3 mt-5 bg-orange-600 text-white px-6 py-3 rounded shadow hover:bg-orange-700 transition font-bold">
+
+          <a
+            href="https://www.linkedin.com/in/maryam-elsheikh-123456789/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >
+            Connect on LinkedIn 
+          </a>
+          <img src="linkedIn.webp" alt="linkedin img" width={35} height={35} />
+            </button>
+
       </section>
     );
   }  

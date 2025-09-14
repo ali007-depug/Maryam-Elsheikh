@@ -34,25 +34,27 @@ export default function WorkExperienceTimeline() {
   ];
 
   return (
-    <section id="experience" className="max-w-6xl mx-auto px-6 py-16">
-              <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
-          {/* Background text */}
-          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 -z-10 w-full">
-            <span className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold text-gray-300 dark:text-ray-800 opacity-30 tracking-widest select-none">
-                WORK
-            </span>
-          </div>
-  
-          {/* Main heading */}
-          <h1 className="text-center font-bold text-4xl sm:text-5xl lg:text-6xl text-orange-500 relative">
-            Work Experience
-          </h1>
+    <section
+      id="experience"
+      className="py-16 bg-gradient-to-r from-orange-800 via-orange-900 to-orange-950"
+    >
+      <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
+        {/* Background text */}
+        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-11 w-full">
+          <span className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold text-white opacity-10 tracking-widest select-none">
+            WORK
+          </span>
         </div>
-  
 
-      <div className="relative">
+        {/* Main heading */}
+        <h1 className="text-center font-bold text-4xl sm:text-5xl lg:text-6xl text-white relative">
+          Work Experience
+        </h1>
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-6 ">
         {/* Vertical timeline line */}
-        <div className="absolute left-1/2 top-0 h-full w-1 bg-orange-500 dark:bg-orange-400 transform -translate-x-1/2"></div>
+        <div className="absolute left-1/2 top-0 h-full w-1  bg-white transform -translate-x-1/2"></div>
 
         <div className="space-y-16">
           {experiences.map((exp, index) => (
@@ -67,11 +69,11 @@ export default function WorkExperienceTimeline() {
               }`}
             >
               {/* Dot */}
-              <span className="absolute left-1/2 top-4 w-5 h-5 rounded-full bg-orange-500 dark:bg-orange-400 border-4 border-white dark:border-gray-900 transform -translate-x-1/2"></span>
+              <span className="absolute left-1/2 max-sm:top-1 top-4 w-5 h-5 rounded-full max-md:bg-gray-300 bg-gray-800 border-4 max-md:border-orange-500 border-white transform -translate-x-1/2"></span>
 
               {/* Card */}
               <div
-                className={`bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 sm:p-8 w-full sm:w-5/12 ${
+                className={`bg-gray-800 shadow-lg rounded-2xl p-6 sm:p-8 w-full md:w-5/12 ${
                   index % 2 === 0 ? "sm:mr-auto" : "sm:ml-auto"
                 }`}
               >

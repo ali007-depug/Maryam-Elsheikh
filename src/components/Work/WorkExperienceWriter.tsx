@@ -28,10 +28,19 @@ export default function WorkExperienceWriter() {
       id="experience"
       className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 px-6"
     >
-      <h2 className="text-center font-bold text-4xl sm:text-5xl text-gray-700 dark:text-gray-200 mb-16">
-        Work & Experience
-      </h2>
+ <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
+        {/* Background text */}
+        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-11 w-full">
+          <span className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold text-white opacity-10 tracking-widest select-none">
+            WORK
+          </span>
+        </div>
 
+        {/* Main heading */}
+        <h1 className="text-center font-bold text-4xl sm:text-5xl lg:text-6xl text-white relative">
+          Work Experience
+        </h1>
+      </div>
       <div
         className={`grid gap-8 md:grid-cols-2`}
         style={{ gridAutoRows: "1fr" }}
