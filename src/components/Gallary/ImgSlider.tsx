@@ -4,87 +4,87 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function ImgSlider() {
   const slides = [
     {
-      img: "img1.jpg",
+      img: "img1.webp",
       title: "Part of a poem",
       desc: "For you are like the night that ever overtakes me,Though I had thought the distance from you was vast.",
     },
     {
-      img: "img2.jpg",
+      img: "img2.webp",
       title: "A popular Sudanese saying.",
       desc: "ًWhat is coming is better than what is gone.",
     },
     {
-      img: "img3.jpg",
+      img: "img3.webp",
       title: "Part of a poem",
       desc: "Carry your country, wherever you go.",
     },
     {
-      img: "img4.jpg",
+      img: "img4.webp",
       title: "Part of a prayer",
       desc: "Save us by Your mercy.",
     },
     {
-      img: "img5.jpg",
+      img: "img5.webp",
       title: "Part of a poem",
       desc: "On this earth, there is what makes life worth living."
     },
     {
-      img: "img6.jpg",
+      img: "img6.webp",
       title: "Literary prose",
       desc: "ًWritten by Me.",
     },
     {
-      img: "img7.jpg",
+      img: "img7.webp",
       title: "Literary prose",
       desc: "Written by Me.",
     },
     {
-      img: "img8.jpg",
+      img: "img8.webp",
       title: "Literary prose",
       desc: "Written by Me.",
     },
     {
-      img: "img9.jpg",
+      img: "img9.webp",
       title: "Part of a prayer",
       desc: "Labbayk,life's path is a lonely road, except when leading to You.",
     },
     {
-      img: "img10.jpg",
+      img: "img10.webp",
       title: "Philosophical advice",
       desc: "Lower your hand. What love does not preserve, power will not keep.",
     },
     {
-      img: "img11.jpg",
+      img: "img11.webp",
       title: "A verse from the Holy Quran",
       desc: "I shall not leave until I reach.",
     },
     {
-      img: "img12.jpg",
+      img: "img12.webp",
       title: "Community Voice",
       desc: "Tomorrow, the birds will fly.",
     },
     {
-      img: "img13.jpg",
+      img: "img13.webp",
       title: "Part of a prayer",
       desc: "And as for new beginnings, grant us, O Lord, the courage to embark, the curiosity to experiment, and the joy of arrival.",
     },
     {
-      img: "img14.jpg",
+      img: "img14.webp",
       title: "ًWisdom",
       desc: "No one knocks on doors that are always open.",
     },
     {
-      img: "img15.jpg",
+      img: "img15.webp",
       title: "Part of a prayer",
       desc: "O Allah, [grant us] the best of matters, the best of days, and the best of people.",
     },
     {
-      img: "img16.jpg",
+      img: "img16.webp",
       title: "ًWisdom",
       desc: "Remember that every tomorrow begins with your 'now'.",
     },
     {
-      img: "img17.jpg",
+      img: "img17.webp",
       title: "Literary prose",
       desc: "Written by me.",
     },
@@ -116,6 +116,7 @@ export default function ImgSlider() {
               src={slides[index].img}
               alt={slides[index].title}
               className="w-full h-full object-contain rounded-2xl"
+              loading="lazy"
             />
             <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-6 rounded-b-2xl">
               <h3 className="text-xl font-semibold text-white">
