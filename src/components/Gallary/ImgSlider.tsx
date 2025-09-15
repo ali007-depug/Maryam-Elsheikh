@@ -16,7 +16,7 @@ export default function ImgSlider() {
     {
       img: "img3.jpg",
       title: "Part of a poem",
-      desc: "I carry my country, wherever I go.",
+      desc: "Carry your country, wherever you go.",
     },
     {
       img: "img4.jpg",
@@ -25,68 +25,68 @@ export default function ImgSlider() {
     },
     {
       img: "img5.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "Part of a poem",
+      desc: "On this earth, there is what makes life worth living."
     },
     {
       img: "img6.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "Literary prose",
+      desc: "ًWritten by Me.",
     },
     {
       img: "img7.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "Literary prose",
+      desc: "Written by Me.",
     },
     {
       img: "img8.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "Literary prose",
+      desc: "Written by Me.",
     },
     {
       img: "img9.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "Part of a prayer",
+      desc: "Labbayk,life's path is a lonely road, except when leading to You.",
     },
     {
       img: "img10.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "Philosophical advice",
+      desc: "Lower your hand. What love does not preserve, power will not keep.",
     },
     {
       img: "img11.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "A verse from the Holy Quran",
+      desc: "I shall not leave until I reach.",
     },
     {
       img: "img12.jpg",
       title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      desc: "Tomorrow, the birds will fly.",
     },
     {
       img: "img13.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "Part of a prayer",
+      desc: "And as for new beginnings, grant us, O Lord, the courage to embark, the curiosity to experiment, and the joy of arrival.",
     },
     {
       img: "img14.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "ًWisdom",
+      desc: "No one knocks on doors that are always open.",
     },
     {
       img: "img15.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "Part of a prayer",
+      desc: "O Allah, [grant us] the best of matters, the best of days, and the best of people.",
     },
     {
       img: "img16.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "ًWisdom",
+      desc: "Remember that every tomorrow begins with your 'now'.",
     },
     {
       img: "img17.jpg",
-      title: "Community Voice",
-      desc: "Amplifying perspectives that matter through thoughtful writing.",
+      title: "Literary prose",
+      desc: "Written by me.",
     },
   ];
 
