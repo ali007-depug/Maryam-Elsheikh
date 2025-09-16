@@ -52,7 +52,7 @@ function Img() {
       <img
         src="hero.jpeg"
         alt="hero"
-        className="relative w-60 h-60 rounded-full border-4 border-white shadow-xl object-cover z-10"
+        className="relative w-60 h-60 rounded-full border-4 border-white shadow-xl object-cover z-1"
       />
 
       {/* floating icons */}
@@ -66,21 +66,21 @@ function Img() {
       <motion.img
         src="icon2.svg"
         alt="icon"
-        className="absolute w-10 bottom-0 right-10 z-11"
+        className="absolute w-10 bottom-0 right-10 z-2"
         animate={{ rotate: [0, 20, 0] }}
         transition={{ repeat: Infinity, duration: 3 }}
       />
       <motion.img
         src="icon3.svg"
         alt="icon"
-        className="absolute w-10 bottom-10 z-11 left-0"
+        className="absolute w-10 bottom-10 z-2 left-0"
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ repeat: Infinity, duration: 2.5 }}
       />
       <motion.img
         src="icon5.svg"
         alt="icon"
-        className="absolute w-10 top-5 z-11 right-0"
+        className="absolute w-10 top-5 z-2 right-0"
         animate={{ opacity: [0.5, 1, 0.5] }}
         transition={{ repeat: Infinity, duration: 4 }}
       />
@@ -90,7 +90,7 @@ function Img() {
 
 function Buttons() {
   return (
-    <div className="flex gap-10">
+    <div className="flex max-sm:gap-5 gap-10 max-sm:px-3">
         {/* download cv */}
         <a
           href="maryam_enginner_Cv.pdf"
@@ -100,7 +100,7 @@ function Buttons() {
       {/* explore */}
       <button>
         <a
-          className="px-4 py-5 bg-white  font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out hover:bg-orange-200"
+          className="max-sm:px-2 px-4 py-5 bg-white  font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out hover:bg-orange-200"
         >Explore my Work</a>
       </button>
 

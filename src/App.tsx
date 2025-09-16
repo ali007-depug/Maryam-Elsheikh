@@ -1,11 +1,11 @@
 import { useState, type ChangeEvent } from "react";
-
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import About from "./components/AboutMe/About";
 import WorkExperience from "./components/Work/WorkExperience";
 import WorkExperienceWriter from "./components/Work/WorkExperienceWriter";
 import Gallary from "./components/Gallary/Gallary";
+import FloatingSelect from "./components/FloatingSelect";
 function App() {
   const [portfolioType, setPortfolioType] = useState("Chemical Engineer");
 
@@ -29,6 +29,8 @@ function App() {
   ];
   return (
     <div className="min-h-[100dvh]">
+      {/* floatin select */}
+      <FloatingSelect handlePortfolioType={handlePortfolioType} portfolioType={portfolioType}/>
       {/* header */}
       <Header
         name="Maryam Elsheikh"

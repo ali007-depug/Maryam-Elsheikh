@@ -1,6 +1,19 @@
 "use client";
 import { motion } from "framer-motion";
 
+interface expProp {
+  role: string;
+  company: string;
+  date: string;
+  description: string;
+  src: string;
+}
+
+interface workCardProps {
+  exp: expProp;
+  index: number;
+}
+
 export default function WorkExperienceTimeline() {
   const experiences = [
     {
@@ -9,6 +22,7 @@ export default function WorkExperienceTimeline() {
       date: "12/2024 – Present",
       description:
         "Oversee content strategy planning and execution, leading a team of creators to produce high-quality, brand-aligned content. Optimize workflows, review and edit content, coordinate with teams, and ensure consistency across channels.",
+      src: "marciel.jpg",
     },
     {
       role: "Sales Associate - Computer Showroom (Internship)",
@@ -16,6 +30,7 @@ export default function WorkExperienceTimeline() {
       date: "7/2025 – 8/2025",
       description:
         "Assisted customers in selecting computers, printers, and accessories by providing technical guidance and product knowledge. Managed sales transactions, maintained product displays, and supported after-sales inquiries.",
+      src: "alafaf.jpg",
     },
     {
       role: "Operation Engineer (Internship)",
@@ -23,6 +38,7 @@ export default function WorkExperienceTimeline() {
       date: "2/2022 – 3/2022",
       description:
         "Gained hands-on experience in operating and controlling RO-systems, water quality monitoring, and teamwork. Prepared and compared daily results and technical reports.",
+      src: "azal.jpg",
     },
     {
       role: "QC Engineer (Training)",
@@ -30,6 +46,7 @@ export default function WorkExperienceTimeline() {
       date: "11/2023 – 23/2/2023",
       description:
         "Trained in maintaining a safe work environment, applying standard operating procedures, and compiling data sheets. Assisted in quality control testing of samples and reporting findings.",
+      src: "ssmo.jpg",
     },
   ];
 
@@ -52,6 +69,23 @@ export default function WorkExperienceTimeline() {
         </h1>
       </div>
 
+      {/* small desc */}
+      <div className="w-full mx-auto mb-10 max-w-3xl px-6 text-center">
+        <p className="text-base sm:text-lg md:text-xl leading-relaxed text-white">
+          My work experience spans{" "}
+          <span className="font-semibold italic">
+            marketing, sales, and engineering
+          </span>{" "}
+          internships, where I gained strong skills in leadership, teamwork, and
+          problem-solving. These diverse roles reflect my adaptability and
+          ability to excel across both{" "}
+          <span className="italic text-gray-100">
+            technical and creative fields
+          </span>
+          .
+        </p>
+      </div>
+
       <div className="relative max-w-6xl mx-auto px-6 ">
         {/* Vertical timeline line */}
         <div className="absolute left-1/2 top-0 h-full w-1  bg-white transform -translate-x-1/2"></div>
@@ -72,30 +106,52 @@ export default function WorkExperienceTimeline() {
               <span className="absolute left-1/2 max-sm:top-1 top-4 w-5 h-5 rounded-full max-md:bg-gray-300 bg-gray-800 border-4 max-md:border-orange-500 border-white transform -translate-x-1/2"></span>
 
               {/* Card */}
-              <div
-                className={`bg-gray-800 shadow-lg rounded-2xl p-6 sm:p-8 w-full md:w-5/12 ${
-                  index % 2 === 0 ? "sm:mr-auto" : "sm:ml-auto"
-                }`}
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                  <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                    {exp.role}
-                  </h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">
-                    {exp.date}
-                  </span>
-                </div>
-                <h4 className="text-lg font-medium text-orange-600 dark:text-orange-400 mb-2">
-                  {exp.company}
-                </h4>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {exp.description}
-                </p>
-              </div>
+              <WorkCard exp={exp} index={index} />
             </motion.div>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function WorkCard({ exp, index }: workCardProps) {
+  return (
+    // card wrapper
+    <div
+      className={`bg-gray-800 shadow-lg rounded-2xl p-6 sm:p-8 w-full md:w-5/12 hover:scale-105 transition-all duration-200 ease-in-out ${
+        index % 2 === 0 ? "sm:mr-auto" : "sm:ml-auto"
+      }`}
+    >
+      {/* card role + data */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+          {exp.role}
+        </h3>
+        <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">
+          {exp.date}
+        </span>
+      </div>
+
+      {/* company name + logo */}
+      <div className="flex justify-between items-center">
+        {/* name */}
+        <h4 className="text-lg font-medium text-orange-600 dark:text-orange-400 mb-2">
+          {exp.company}
+        </h4>
+        {/* logo */}
+        <img
+          src={exp.src}
+          alt={exp.company + "logo"}
+          width={50}
+          height={50}
+          className="rounded size-17 md:size-20"
+        />
+      </div>
+      {/* desc */}
+      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+        {exp.description}
+      </p>
+    </div>
   );
 }

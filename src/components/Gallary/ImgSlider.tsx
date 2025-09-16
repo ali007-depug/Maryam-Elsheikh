@@ -96,7 +96,7 @@ export default function ImgSlider() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 7000);
+    }, 6500);
     return () => clearInterval(timer);
   }, [slides.length]);
 

@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType })
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="text- px-10  w-full z-3 bg-white overflow-hidden">
+    <header className="px-3 md:px-10  w-full z-3 bg-white overflow-hidden">
       <div className="mx-auto flex justify-between items-center h-16">
         
         {/* Avatar */}
@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType })
             // X icon
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-white"
+              className="h-6 w-6 text-white z-100"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType })
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50  sm:hidden"
+            className="fixed inset-0 z-99 bg-black/50  sm:hidden"
             onClick={toggleMenu}
           >
             <motion.div

@@ -6,6 +6,7 @@ export default function WorkExperienceWriter() {
       date: "12/2024 – Present",
       description:
         "Working remotely, I oversee the planning, management, and execution of content strategies. Lead a team of creators to produce brand-aligned content, optimize workflows, review and edit, and ensure message consistency across all channels.",
+      src: "marciel.jpg",
     },
     {
       role: "Content Writer (Volunteer)",
@@ -13,6 +14,7 @@ export default function WorkExperienceWriter() {
       date: "2021",
       description:
         "Volunteered as a content writer remotely, created 15+ posts supporting the conference, managed the Facebook page, and increased followers by 50%.",
+      src: "tedEx.jpg",
     },
     {
       role: "Articles Writer",
@@ -20,6 +22,7 @@ export default function WorkExperienceWriter() {
       date: "12/2019 – 12/2020",
       description:
         "Worked remotely as a weekly articles writer focusing on women’s issues and community problems. Developed skills in research, analysis, and creative report writing.",
+      src: "akherLahza.jpg",
     },
   ];
 
@@ -28,7 +31,7 @@ export default function WorkExperienceWriter() {
       id="experience"
       className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 px-6"
     >
- <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
+      <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
         {/* Background text */}
         <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-11 w-full">
           <span className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold text-white opacity-10 tracking-widest select-none">
@@ -41,6 +44,23 @@ export default function WorkExperienceWriter() {
           Work Experience
         </h1>
       </div>
+
+      {/* small desc */}
+      <div className="w-full mx-auto mb-10 max-w-3xl px-6 text-center">
+        <p className="text-base sm:text-lg md:text-xl leading-relaxed text-blue-200">
+          My experience as a{" "}
+          <span className="font-semibold italic">
+            content writer and supervisor
+          </span>{" "}
+          spans roles in marketing, volunteering, and journalism. I’ve led
+          teams, managed strategies, and crafted impactful writing that blends{" "}
+          <span className="italic text-gray-100">
+            creativity with communication
+          </span>
+          .
+        </p>
+      </div>
+
       <div
         className={`grid gap-8 md:grid-cols-2`}
         style={{ gridAutoRows: "1fr" }}
@@ -59,9 +79,20 @@ export default function WorkExperienceWriter() {
               <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
                 {exp.role}
               </h3>
-              <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                {exp.company} • {exp.date}
-              </span>
+              {/* company + logo */}
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  {exp.company} • {exp.date}
+                </span>
+                {/* logo */}
+                <img
+                  src={exp.src}
+                  alt={exp.company + "logo"}
+                  width={50}
+                  height={50}
+                  className="rounded size-17 md:size-20"
+                />
+              </div>
             </div>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               {exp.description}
