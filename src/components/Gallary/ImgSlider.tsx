@@ -60,7 +60,7 @@ export default function ImgSlider() {
     },
     {
       img: "img12.webp",
-      title: "Community Voice",
+      title: "Popular Pharse",
       desc: "Tomorrow, the birds will fly.",
     },
     {

@@ -6,6 +6,7 @@ import WorkExperience from "./components/Work/WorkExperience";
 import WorkExperienceWriter from "./components/Work/WorkExperienceWriter";
 import Gallary from "./components/Gallary/Gallary";
 import FloatingSelect from "./components/FloatingSelect";
+import ContactMe from "./components/Contact/ContactMe";
 function App() {
   const [portfolioType, setPortfolioType] = useState("Chemical Engineer");
 
@@ -28,7 +29,7 @@ function App() {
     },
   ];
   return (
-    <div className="min-h-[100dvh]">
+    <div className="min-h-[100dvh] scroll-smooth">
       {/* floatin select */}
       <FloatingSelect handlePortfolioType={handlePortfolioType} portfolioType={portfolioType}/>
       {/* header */}
@@ -55,6 +56,9 @@ function App() {
 
       {/* <Gallary/> */}
       {portfolioType === 'Content Writer' && <Gallary/>}
+
+      {/* contact */}
+      <ContactMe/>
     </div>
   );
 }

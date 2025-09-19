@@ -7,7 +7,7 @@ export default function ContentWriter() {
 function Hero() {
   return (
     <section className="flex flex-col items-center  bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded shadow-lg py-8 ">
-      <div className="flex flex-col md:flex-row justify-between gap-10 sm:gap-10 px-4 sm:px-8 py-10 sm:py-12">
+      <div className="flex flex-col md:flex-row max-md:justify-between max-md:gap-10 sm:gap-10 px-4 sm:px-8 py-10 sm:py-12">
         {/* text */}
         <Text />
         {/* img */}

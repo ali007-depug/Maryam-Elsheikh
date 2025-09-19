@@ -90,7 +90,7 @@ export default function WorkExperienceTimeline() {
         {/* Vertical timeline line */}
         <div className="absolute left-1/2 top-0 h-full w-1  bg-white transform -translate-x-1/2"></div>
 
-        <div className="space-y-16">
+        <div className="space-y-16 max-md:overflow-hidden">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -119,7 +119,7 @@ function WorkCard({ exp, index }: workCardProps) {
   return (
     // card wrapper
     <div
-      className={`bg-gray-800 shadow-lg rounded-2xl p-6 sm:p-8 w-full md:w-5/12 hover:scale-105 transition-all duration-200 ease-in-out ${
+      className={`bg-orange-950 shadow shadow-gray-700 border border-gray-400 rounded-2xl p-6 sm:p-8 w-full md:w-5/12 hover:scale-105 transition-all duration-200 ease-in-out ${
         index % 2 === 0 ? "sm:mr-auto" : "sm:ml-auto"
       }`}
     >
@@ -128,7 +128,7 @@ function WorkCard({ exp, index }: workCardProps) {
         <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
           {exp.role}
         </h3>
-        <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">
+        <span className="text-sm text-gray-200 mt-1 sm:mt-0">
           {exp.date}
         </span>
       </div>

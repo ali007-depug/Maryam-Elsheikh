@@ -7,7 +7,7 @@ export default function Engineer() {
 function Hero() {
   return (
     <section className="flex flex-col  items-center  bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800 rounded shadow-lg py-8 ">
-        <div className="flex flex-col md:flex-row justify-between gap-10 px-8 py-12">
+        <div className="flex flex-col md:flex-row max-md:justify-between max-md:gap-10 px-8 py-12">
       {/* text */}
       <Text />
       {/* img */}

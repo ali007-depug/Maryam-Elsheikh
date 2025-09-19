@@ -10,6 +10,7 @@
   --animate-icon: fromLeftToRight 0.5s ease-in-out alternate 6;
   --animate-iconshow: show 0.5s 0.5s ease-in-out alternate 6;
   --animate-selfPulse: pulse 0.5s ease-in-out alternate 6;
+  --animate-toast: toast 0.5s ease-in-out forwards;
 
   @keyframes fromLeftToRight {
     0% {
@@ -43,6 +44,16 @@
       opacity:1;
       transform:scale(1);
 
+    }
+  }
+  @keyframes toast {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
