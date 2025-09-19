@@ -14,7 +14,7 @@ export default function Form() {
     emailjs
       .sendForm(
         "service_ue37d1g", // e.g. service_xxx
-        "template_95cwloo", // e.g. template_abc
+        "template_zyqr6jq", // e.g. template_abc
         form.current,
         "ZswtFDAFZFZvNPBNJ" // from EmailJS dashboard
       )
