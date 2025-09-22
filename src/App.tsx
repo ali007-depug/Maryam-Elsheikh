@@ -36,8 +36,8 @@ function App() {
       <Header
         name="Maryam Elsheikh"
         links={headerMenu}
-        avatarSrc="avatar2.jpg"
         portfolioType={portfolioType}
+        avatarSrc="avatar2.jpg"
       />
       {/* hero */}
       <Hero
@@ -45,7 +45,7 @@ function App() {
         handlePortfolioType={handlePortfolioType}
       />
       {/* about */}
-      <About />
+      <About portfolioType={portfolioType} />
 
       {/* work experience */}
       {portfolioType === "Chemical Engineer" ? (
@@ -58,7 +58,7 @@ function App() {
       {portfolioType === 'Content Writer' && <Gallary/>}
 
       {/* contact */}
-      <ContactMe/>
+      <ContactMe portfolioType={portfolioType}/>
     </div>
   );
 }

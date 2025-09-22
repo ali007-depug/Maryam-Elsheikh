@@ -8,6 +8,7 @@ interface HeroProps {
 }
 
 interface selectProp {
+  portfolioType: string;
   handlePortfolioTypeChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -19,8 +20,8 @@ export default function Hero({
     <div
       className={`w-full min-h-[90dvh]  ${
         portfolioType === "Chemical Engineer"
-          ? "bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800"
-          : "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700"
+          ? "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700"
+          : "bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800"
       }`}
     >
       <div className="flex flex-col items-center justify-center gap-5 mb-10">
@@ -31,8 +32,8 @@ export default function Hero({
             <span
               className={`${
                 portfolioType === "Chemical Engineer"
-                  ? "text-orange-400"
-                  : "text-sky-200"
+                  ? "text-sky-200"
+                  : "text-orange-400"
               } font-extrabold`}
             >
               Maryam
@@ -41,7 +42,7 @@ export default function Hero({
           </h1>
 
           <div className="text-lg sm:text-xl font-semibold">
-            <Select handlePortfolioTypeChange={handlePortfolioType} />
+            <Select handlePortfolioTypeChange={handlePortfolioType} portfolioType={portfolioType} />
           </div>
         </div>
         {/* end select wrapper */}
@@ -59,12 +60,12 @@ export default function Hero({
 }
 
 // select component
-export function Select({ handlePortfolioTypeChange }: selectProp) {
+export function Select({ handlePortfolioTypeChange , portfolioType}: selectProp) {
   return (
     <select
       name="meAs"
       className="border px-2 py-1 mt-2 md:mt-0 text-center text-white bg-black/60 focus:outline-orange-500 border-orange-300 rounded cursor-pointer w-full md:w-auto"
-      onChange={handlePortfolioTypeChange}
+      onChange={handlePortfolioTypeChange} value={portfolioType}
     >
       <option value="Chemical Engineer">Chemical Engineer</option>
       <option value="Content Writer">Content Writer</option>

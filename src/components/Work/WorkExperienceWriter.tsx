@@ -29,7 +29,7 @@ export default function WorkExperienceWriter() {
   return (
     <section
       id="experience"
-      className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 px-6"
+      className="bg-gradient-to-br from-orange-800 via-orange-900 to-orange-950 py-20 px-6"
     >
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
         {/* Background text */}
@@ -73,7 +73,7 @@ export default function WorkExperienceWriter() {
               index === experiences.length - 1 && experiences.length % 2 !== 0
                 ? "md:col-span-2"
                 : ""
-            } border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-sm hover:shadow-lg transition bg-white dark:bg-gray-900`}
+            } border  border-gray-700 rounded-2xl p-8 shadow-sm hover:shadow-lg transition bg-orange-950`}
           >
             <div className="flex flex-col gap-2 mb-4">
               <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
@@ -81,7 +81,7 @@ export default function WorkExperienceWriter() {
               </h3>
               {/* company + logo */}
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                <span className="text-sm font-medium text-orange-500">
                   {exp.company} • {exp.date}
                 </span>
                 {/* logo */}

@@ -6,7 +6,7 @@ export default function ContentWriter() {
 
 function Hero() {
   return (
-    <section className="flex flex-col items-center  bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded shadow-lg py-8 ">
+    <section className="flex flex-col items-center  bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800 rounded shadow-lg py-8 ">
       <div className="flex flex-col md:flex-row max-md:justify-between max-md:gap-10 sm:gap-10 px-4 sm:px-8 py-10 sm:py-12">
         {/* text */}
         <Text />
@@ -55,7 +55,7 @@ function Img() {
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ repeat: Infinity, duration: 3 }}
-        className="absolute w-64 h-64 rounded-full bg-gray-600 blur-3xl opacity-40"
+        className="absolute w-64 h-64 rounded-full  bg-orange-600 blur-3xl opacity-40"
       />
 
       {/* hero img */}
@@ -109,7 +109,7 @@ function Buttons() {
         <a
           href="maryam_elsheikh_content_writer_Cv.pdf"
           download="maryam_elsheikh_content_writer_Cv.pdf"
-          className="px-4 py-5 bg-white font-semibold rounded-lg shadow-md hover:bg-gray-200 hover:text-black transition-all duration-300 ease-in-out"
+          className="px-4 py-5  bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-600 transition-all duration-300 ease-in-out"
         >
           Download My CV 📎
         </a>
@@ -117,7 +117,8 @@ function Buttons() {
       {/* explore */}
       <button>
         <a
-          className="px-4 py-5 bg-gray-600 text-white  font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out hover:bg-gray-500"
+          className="
+          max-sm:px-2 px-4 py-5 bg-white  font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out hover:bg-orange-200"
         >
           Explore my Work
         </a>

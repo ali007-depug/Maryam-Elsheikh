@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  // base:"/Maryam-Elsheikh/",
+  // base:"/Maryam-Elsheikh/"
   plugins: [react(), tailwindcss(),
     // visualizer({
     //   open: true, // Automatically opens the report in browser

@@ -53,7 +53,7 @@ export default function WorkExperienceTimeline() {
   return (
     <section
       id="experience"
-      className="py-16 bg-gradient-to-r from-orange-800 via-orange-900 to-orange-950"
+      className="bg-gradient-to-r  from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 px-6"
     >
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
         {/* Background text */}
@@ -119,7 +119,7 @@ function WorkCard({ exp, index }: workCardProps) {
   return (
     // card wrapper
     <div
-      className={`bg-orange-950 shadow shadow-gray-700 border border-gray-400 rounded-2xl p-6 sm:p-8 w-full md:w-5/12 hover:scale-105 transition-all duration-200 ease-in-out ${
+      className={`bg-gray-700 shadow shadow-gray-700 border border-gray-400 rounded-2xl p-6 sm:p-8 w-full md:w-5/12 hover:scale-105 transition-all duration-200 ease-in-out ${
         index % 2 === 0 ? "sm:mr-auto" : "sm:ml-auto"
       }`}
     >
@@ -136,7 +136,7 @@ function WorkCard({ exp, index }: workCardProps) {
       {/* company name + logo */}
       <div className="flex justify-between items-center">
         {/* name */}
-        <h4 className="text-lg font-medium text-orange-600 dark:text-orange-400 mb-2">
+        <h4 className="text-lg font-medium text-sky-400  mb-2">
           {exp.company}
         </h4>
         {/* logo */}

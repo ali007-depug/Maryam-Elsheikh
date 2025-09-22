@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import emailjs from "emailjs-com";
-export default function Form() {
+export default function Form({portfolioType}:{portfolioType:string}) {
   const [showToast, setShowToast] = useState(false);
   const [loading, setLoading] = useState(false);
   const form = useRef<HTMLFormElement>(null);
@@ -37,14 +37,14 @@ export default function Form() {
       <form
         onSubmit={sendEmail}
         ref={form}
-        className="basis-1/2 flex flex-col gap-5 relative focus-within:text-orange-900"
+        className={`basis-1/2 flex flex-col gap-5 relative ${portfolioType === 'Chemical Engineer' ? 'focus-within:text-gray-900' :'focus-within:text-orange-900'}`}
       >
         <input
           type="text"
           name="user_name"
           id="user_name"
           placeholder="Your Name"
-          className="h-10 p-2 border border-orange-900 focus:outline-orange-500"
+          className={`h-10 p-2 border ${portfolioType === 'Chemical Engineer' ? 'border-gray-700 focus:outline-gray-900' :'border-orange-900 focus:outline-orange-500'}`}
           required
         />
         <input
@@ -52,19 +52,19 @@ export default function Form() {
           name="user_email"
           id="user_email"
           placeholder="Your Email"
-          className="h-10 p-2 border border-orange-900 focus:outline-orange-500"
+          className={`h-10 p-2 border ${portfolioType === 'Chemical Engineer' ? 'border-gray-700 focus:outline-gray-900' :'border-orange-900 focus:outline-orange-500'}`}
           required
         />
         <textarea
           name="message"
           id="message"
           placeholder="Your Message"
-          className="h-30 p-2 border border-orange-900 focus:outline-orange-500"
+          className={`h-30 p-2 border ${portfolioType === 'Chemical Engineer' ? 'border-gray-700 focus:outline-gray-900' :'border-orange-900 focus:outline-orange-500'}`}
           required
         ></textarea>
         <button
           type="submit"
-          className="w-fit px-5 py-3 mx-auto bg-gradient-to-l from-orange-500 to-orange-950 hover:to-orange-500 text-white cursor-pointer transition duration-300 ease-in-out rounded "
+          className={`w-fit px-5 py-3 mx-auto  text-white cursor-pointer transition duration-300 ease-in-out rounded bg-gradient-to-l ${portfolioType === 'Chemical Engineer' ? 'from-gray-500 to-gray-800 hover:to-gray-950' :' from-orange-500 to-orange-950 hover:to-orange-500'}`}
         >
           {loading ? "Sending..." : "Send Message"}
         </button>

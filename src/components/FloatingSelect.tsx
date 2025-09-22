@@ -29,7 +29,7 @@ export default function FloatingSelect({
       className={`w-50  ${
         portfolioType === "Chemical Engineer"
           ? "bg-black/80"
-          : "bg-sky-700/80 border-white"
+          : "bg-orange-700/80 border-white"
       } border p-3 right-5 bottom-1 fixed z-99 flex flex-col transition-all duration-300 ease-in-out items-center gap-2 rounded-md ${
         showFloatingSelect ? "opacity-100 visible" : "opacity-0"
       }`}
@@ -37,7 +37,7 @@ export default function FloatingSelect({
       <p className="text-white max-sm:text-sm font-semibold">
         Me as :{" "}
       </p>
-      <Select handlePortfolioTypeChange={handlePortfolioType} />
+      <Select portfolioType={portfolioType} handlePortfolioTypeChange={handlePortfolioType} />
     </div>
   );
 }

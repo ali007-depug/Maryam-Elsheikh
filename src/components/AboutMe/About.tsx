@@ -1,4 +1,4 @@
-export default function About() {
+export default function About({ portfolioType }: { portfolioType: string }) {
   return (
     <section
       id="about"
@@ -8,13 +8,25 @@ export default function About() {
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
         {/* Background text */}
         <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 -z-10 w-full">
-          <span className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold text-gray-300 dark:text-ray-800 opacity-30 tracking-widest select-none">
+          <span
+            className={`text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold opacity-30 tracking-widest select-none ${
+              portfolioType === "Chemical Engineer"
+                ? "text-gray-600"
+                : "text-orange-700"
+            }`}
+          >
             ABOUT
           </span>
         </div>
 
         {/* Main heading */}
-        <h1 className="text-center font-bold text-4xl sm:text-5xl lg:text-6xl text-orange-500 relative">
+        <h1
+          className={`text-center font-bold text-4xl sm:text-5xl lg:text-6xl relative ${
+            portfolioType === "Chemical Engineer"
+              ? "text-gray-700"
+              : "text-orange-500"
+          }`}
+        >
           About Me
         </h1>
       </div>
@@ -23,7 +35,13 @@ export default function About() {
       <div className="space-y-6 text-base sm:text-lg md:text-xl leading-relaxed text-gray-700 dark:ext-gray-300">
         <p>
           I'm{" "}
-          <span className="font-semibold text-orange-600 dark:text-orange-400">
+          <span
+            className={`font-semibold ${
+              portfolioType === "Chemical Engineer"
+                ? "text-gray-700"
+                : "text-orange-500"
+            }`}
+          >
             Maryam
           </span>
           , a Chemical Engineer with a passion for creating engaging content. I
@@ -49,7 +67,11 @@ export default function About() {
         href="https://www.linkedin.com/in/maryamelsheikh1998"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center gap-3 mt-5 bg-orange-600 text-white px-6 py-3 rounded shadow hover:bg-orange-700 transition font-bold"
+        className={`flex items-center justify-center gap-3 mt-5 text-white px-6 py-3 rounded shadow transition font-bold ${
+          portfolioType === "Chemical Engineer"
+            ? "bg-gray-700 hover:bg-gray-800"
+            : "bg-orange-600 hover:bg-orange-700"
+        }`}
       >
         Connect on LinkedIn
         <img src="linkedIn.webp" alt="linkedin img" width={35} height={35} />
