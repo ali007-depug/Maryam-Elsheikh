@@ -88,6 +88,8 @@ interface cardProp {
   icon: string;
   text: string;
   title:string;
+  iconColor:string,
+  textColor:string,
 }
 function Card({ cards }: cards) {
   return (
@@ -98,9 +100,9 @@ function Card({ cards }: cards) {
           className="flex p-2 border rounded-lg shadow-md  flex-col items-center 
     space-y-4 text-sm min-w-20 max-md:min-h-40"
         >
-          <IconHandler iconName={c.icon} size={30} />
-          <p>{c.title}</p>
-          <p>{c.text}</p>
+          <IconHandler iconName={c.icon} color={c.iconColor} size={30} />
+          <p className={`${c.textColor} font-semibold`}>{c.title}</p>
+          <p className={`${c.textColor} font-semibold`}>{c.text}</p>
         </div>
       ))}
     </>
