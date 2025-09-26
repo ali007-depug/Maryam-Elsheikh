@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType })
         {/* Hamburger / X Button */}
         <button
           onClick={toggleMenu}
-          className="sm:hidde relative w-6 h-6 flex flex-col justify-center items-center focus:outline-none z-200"
+          className="sm:hidden relative w-6 h-6 flex flex-col justify-center items-center focus:outline-none z-200"
         >
           {isOpen ? (
             // X icon
