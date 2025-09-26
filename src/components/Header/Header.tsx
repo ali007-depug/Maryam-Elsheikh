@@ -5,7 +5,7 @@ interface HeaderProps {
   name: string;
   avatarSrc?: string;
   links: { label: string; href: string }[];
-  portfolioType:string;
+  portfolioType:"Chemical Engineer" | "Content Writer";
 }
 
 const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType }) => {
@@ -52,10 +52,11 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType })
         {/* Hamburger / X Button */}
         <button
           onClick={toggleMenu}
-          className="sm:hidden relative w-6 h-6 flex flex-col justify-center items-center focus:outline-none z-99"
+          className="sm:hidde relative w-6 h-6 flex flex-col justify-center items-center focus:outline-none z-200"
         >
           {isOpen ? (
             // X icon
+            // <GrClose className="bg-red-200 z-200 "/>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-white z-100"
@@ -69,9 +70,9 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType })
           ) : (
             // Hamburger icon
             <>
-              <span className="w-6 h-0.5 bg-orange-400 mb-1"></span>
-              <span className="w-6 h-0.5 bg-orange-400 mb-1"></span>
-              <span className="w-6 h-0.5 bg-orange-400"></span>
+              <span className={`w-6 h-0.5 ${portfolioType === 'Chemical Engineer' ? 'bg-gray-700' : 'bg-orange-400'} mb-1`}></span>
+              <span className={`w-6 h-0.5 ${portfolioType === 'Chemical Engineer' ? 'bg-gray-700' : 'bg-orange-400'} mb-1`}></span>
+              <span className={`w-6 h-0.5 ${portfolioType === 'Chemical Engineer' ? 'bg-gray-700' : 'bg-orange-400'}`}></span>
             </>
           )}
         </button>
@@ -92,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType })
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="absolute right-0 top-0 h-full w-[40%] bg-[#ff914d] p-6 flex flex-col space-y-4"
+              className={`absolute right-0 top-0 h-full w-[40%] ${portfolioType === 'Chemical Engineer' ? 'bg-gray-700' : 'bg-[#ff914d]'} p-6 flex flex-col space-y-4`}
               onClick={(e) => e.stopPropagation()}
             >
               {links.map((link, idx) => (

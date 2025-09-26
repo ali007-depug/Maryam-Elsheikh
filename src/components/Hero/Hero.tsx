@@ -92,7 +92,7 @@ export default function Hero({
             </p>
           </div>
           {/* image + floating icons */}
-          <div className="relative w-fit mx-auto flex justify-center items-center">
+          <div className="relative w-fit m-auto flex justify-center items-center">
             {/* glow */}
             <motion.div
               animate={{ scale: [1, 1.1, 1] }}
