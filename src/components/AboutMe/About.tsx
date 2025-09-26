@@ -16,9 +16,9 @@ export default function About({
       {/* Heading wrapper */}
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
         {/* Background text */}
-        <div className="absolute max-sm: -top-8 left-1/2 transform -translate-x-1/2 -z-10 w-full">
+        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-11 w-full">
           <span
-            className={`text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold opacity-10 tracking-widest select-none ${
+            className={`text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold opacity-6 tracking-widest select-none ${
               portfolioType === "Chemical Engineer"
                 ? "text-gray-600"
                 : "text-orange-700"
@@ -30,13 +30,13 @@ export default function About({
 
         {/* Main heading */}
         <h1
-          className={`text-center font-bold text-4xl sm:text-5xl lg:text-6xl relative ${
+          className={`text-center font-bold text-4xl sm:text-5xl lg:text-6xlrelative ${
             portfolioType === "Chemical Engineer"
               ? "text-gray-700"
               : "text-orange-500"
           }`}
         >
-          About Me
+          About
         </h1>
       </div>
 

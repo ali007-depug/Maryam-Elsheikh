@@ -13,7 +13,7 @@ export default function ContactMe({
         {/* Background text */}
         <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-11 w-full">
           <span
-            className={`text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold opacity-10 tracking-widest select-none ${
+            className={`text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold opacity-6 tracking-widest select-none ${
               portfolioType === "Chemical Engineer"
                 ? "text-gray-600"
                 : "text-orange-700"

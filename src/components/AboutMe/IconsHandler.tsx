@@ -23,7 +23,7 @@ export type IconName =
   | "FaChessQueen"
   | "FaFacebook"
   | "FaLinkedin"
-  | "FaLuPenTool";
+  | "LuPenTool";
 
 interface IconHandlerProps {
   iconName: IconName | string;
