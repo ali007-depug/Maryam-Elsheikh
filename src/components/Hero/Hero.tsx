@@ -45,7 +45,7 @@ export default function Hero({
     >
       <div className="flex flex-col items-center justify-center gap-5">
         {/* select wrapper */}
-        <div className="flex flex-col md:flex-row gap-3 md:gap-2 items-start md:items-center mt-10">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-2 items-center mt-10">
           <h1 className="text-lg sm:text-xl font-bold leading-snug text-white">
             Hello, I'm{" "}
             <span

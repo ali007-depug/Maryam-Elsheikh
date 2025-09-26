@@ -101,12 +101,12 @@ function Card({ cards }: cards) {
       {cards.map((c, index) => (
         <div
           key={index}
-          className={`flex p-2 border border-${c.color} rounded-lg shadow-md  flex-col items-center 
+          className={`flex p-2 border border${c.color} rounded-lg shadow-md  flex-col items-center 
     space-y-4 text-sm min-w-20 max-md:min-h-40 hover:scale-105 transition-transform duration-300`}
         >
           <IconHandler iconName={c.icon} color={c.iconColor} size={30} />
-          <p className={`text-${c.color} font-semibold`}>{c.title}</p>
-          <p className={`text-${c.color} font-semibold`}>{c.text}</p>
+          <p className={`${c.color} font-semibold`}>{c.title}</p>
+          <p className={`${c.color} font-semibold`}>{c.text}</p>
         </div>
       ))}
     </>

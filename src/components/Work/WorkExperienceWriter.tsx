@@ -9,7 +9,7 @@ export default function WorkExperienceWriter({portfolioType}: {portfolioType: "C
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
         {/* Background text */}
         <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-11 w-full">
-          <span className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold text-white opacity-6 tracking-widest select-none">
+          <span className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold text-white opacity-6nn tracking-widest select-none">
             WORK
           </span>
         </div>
