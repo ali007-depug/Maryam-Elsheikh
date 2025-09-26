@@ -41,10 +41,10 @@ export default function Gallary() {
           href="https://www.instagram.com/maryamelsheikh9?igsh=MW5wcDRxaWx6aDNsbw=="
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-fit mx-auto items-center justify-center gap-3 mt-5 bg-orange-800 text-white px-6 py-3 rounded shadow hover:bg-orange-700 transition font-bold"
+          className="flex w-fit mx-auto items-center justify-center gap-3 mt-5 bg-orange-700 text-white px-6 py-3 rounded-lg shadow hover:bg-orange-800 transition font-bold"
         >
-          View more on Instagram
-        <img src="instagram.png" alt="instagram icon" width={50} height={50} className="size-10"/>
+        <img src="instagram.png" alt="instagram icon" width={30} height={30} className="size-8"/>
+          View More On Instagram
         </a>
     </section>
   );

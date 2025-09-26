@@ -10,8 +10,8 @@ export default function ImgSlider() {
     },
     {
       img: "img2.webp",
-      title: "A popular Sudanese saying.",
-      desc: "ًWhat is coming is better than what is gone.",
+      title: "A popular Sudanese saying",
+      desc: "What is coming is better than what is gone.",
     },
     {
       img: "img3.webp",
@@ -96,7 +96,7 @@ export default function ImgSlider() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 6500);
+    }, 7500);
     return () => clearInterval(timer);
   }, [slides.length]);
 

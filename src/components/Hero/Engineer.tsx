@@ -6,8 +6,8 @@ export default function Engineer() {
 
 function Hero() {
   return (
-    <section className="flex flex-col  items-center  bg-gradient-to-r  from-gray-900 via-gray-800 to-gray-700 rounded shadow-lg py-8 ">
-        <div className="flex flex-col md:flex-row max-md:justify-between max-md:gap-10 px-8 py-12">
+    <section className="flex flex-col  items-center  bg-gradient-to-r  from-gray-900 via-gray-800 to-gray-700 rounded py-4 ">
+        <div className="flex flex-col md:flex-row max-md:justify-between gap-10 px-8 py-5 md:py-8 mb-10">
       {/* text */}
       <Text />
       {/* img */}
@@ -22,8 +22,8 @@ function Hero() {
 
 function Text() {
   return (
-    <div className="md:w-1/2 text-center md:text-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+    <div className="w-full md:w-1/2">
+      <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
         Chemical Engineer
       </h2>
       <p className="text-gray-200 leading-8 text-base sm:text-lg">
@@ -40,7 +40,7 @@ function Text() {
 
 function Img() {
   return (
-    <div className="relative  w-fit mx-auto flex justify-center items-center">
+    <div className="relative w-fit mx-auto flex justify-center items-center">
       {/* background glow */}
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}

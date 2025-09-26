@@ -6,8 +6,8 @@ export default function ContentWriter() {
 
 function Hero() {
   return (
-    <section className="flex flex-col items-center  bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800 rounded shadow-lg py-8 ">
-      <div className="flex flex-col md:flex-row max-md:justify-between max-md:gap-10 sm:gap-10 px-4 sm:px-8 py-10 sm:py-12">
+    <section className="flex flex-col items-center  bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800 rounded py-4 ">
+      <div className="flex flex-col md:flex-row max-md:justify-between max-md:gap-10 sm:gap-10 px-4 sm:px-8 py-5 sm:py-8 mb-10">
         {/* text */}
         <Text />
         {/* img */}
@@ -21,24 +21,23 @@ function Hero() {
 
 function Text() {
   return (
-    <div className="w-full md:w-1/2 text-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-      Content Writer
+    <div className="w-full md:w-1/2 text-enter">
+      <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+        Content Writer
       </h2>
       <p className="text-gray-200 leading-relaxed sm:leading-8 text-base sm:text-lg">
-        Former <span className="font-semibold">Content Writer</span> at TEDX
+        • Former <span className="font-semibold">Content Writer</span> at TEDX
         Wad-Madani Conference (2021) &amp; former
         <span className="font-semibold"> Articles Writer</span> at Akhirlahza
         Newspaper. <br />
-        <br />
-        One of the main founders of{" "}
+        • One of the main founders of{" "}
         <span className="font-semibold">Moqueroon Organization</span> that cares
         about community services and awareness for college students. <br />
-        <br />
-        Volunteered as <span className="font-semibold">Content Writer</span>,
+        • Volunteered as <span className="font-semibold">Content Writer</span>,
         Page Manager, and
         <span className="font-semibold"> Social Media Content Creator</span> for
-        several charitable organizations. Passionate about{" "}
+        several charitable organizations. 
+         Passionate about{" "}
         <span className="font-semibold">sustainable energy</span>,{" "}
         <span className="font-semibold">safety &amp; quality control</span>,{" "}
         <span className="font-semibold">water treatment</span>, and{" "}

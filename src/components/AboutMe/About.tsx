@@ -1,8 +1,17 @@
-export default function About({ portfolioType }: { portfolioType: string }) {
+import { aboutData } from "../../data/About";
+import { IconHandler } from "./IconsHandler";
+
+export default function About({
+  portfolioType,
+}: {
+  portfolioType: "Chemical Engineer" | "Content Writer";
+}) {
+  const { about, highlightClass, pButton, cards } = aboutData[portfolioType];
+
   return (
     <section
       id="about"
-      className="max-w-4xl flex flex-col justify-center items-center mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20"
+      className="mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20"
     >
       {/* Heading wrapper */}
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
@@ -32,50 +41,68 @@ export default function About({ portfolioType }: { portfolioType: string }) {
       </div>
 
       {/* About content */}
-      <div className="space-y-6 text-base sm:text-lg md:text-xl leading-relaxed text-gray-700 dark:ext-gray-300">
-        <p>
-          I'm{" "}
-          <span
-            className={`font-semibold ${
-              portfolioType === "Chemical Engineer"
-                ? "text-gray-700"
-                : "text-orange-500"
-            }`}
-          >
-            Maryam
-          </span>
-          , a Chemical Engineer with a passion for creating engaging content. I
-          specialize in crafting clear and compelling articles that make complex
-          topics easy to understand. With a background in engineering and a
-          knack for writing, I bring a unique perspective to my work.
-        </p>
-
-        <p>
-          When I'm not writing, you can find me exploring new technologies,
-          reading about the latest trends in engineering, or enjoying a good
-          book. I'm always eager to learn and take on new challenges.
-        </p>
-
-        <p>
-          Let's connect! Whether you're looking for a skilled content writer or
-          just want to chat about engineering, feel free to reach out.
-        </p>
+      <div className="max-md:grid-cols-1 grid grid-cols-[1.5fr_1fr] gap-2.5 space-y-6 text-base sm:text-lg md:text-xl leading-relaxed text-gray-700">
+        <div className="col-start-1 col-end-2 text-balance">
+          {/* about content */}
+          {about.map((para, idx) => (
+            <p
+              key={idx}
+              dangerouslySetInnerHTML={{
+                __html: para.replace(
+                  'class="highlight"',
+                  `class="font-semibold ${highlightClass}"`
+                ),
+              }}
+            />
+          ))}
+        </div>
+        {/* card contents */}
+        <div className="max-lg:grid-cols-1 max-lg:grid-rows-4 max-lg:ga  grid grid-cols-2 grid-rows-2 gap-2.5">
+          <Card cards={cards} />
+        </div>
       </div>
       {/* linked in button */}
 
       <a
-        href="https://www.linkedin.com/in/maryamelsheikh1998"
+        href={pButton.link}
         target="_blank"
         rel="noopener noreferrer"
-        className={`flex items-center justify-center gap-3 mt-5 text-white px-6 py-3 rounded shadow transition font-bold ${
+        className={`mx-auto w-fit flex items-center justify-center gap-3 mt-5 px-6 py-3 rounded shadow transition font-bold  text-white ${
           portfolioType === "Chemical Engineer"
             ? "bg-gray-700 hover:bg-gray-800"
             : "bg-orange-600 hover:bg-orange-700"
         }`}
       >
-        Connect on LinkedIn
-        <img src="linkedIn.webp" alt="linkedin img" width={35} height={35} />
+        <IconHandler iconName={pButton.imgSrc} color={pButton.iconColor} size={25}/>
+        {pButton.text}
       </a>
     </section>
+  );
+}
+
+interface cards {
+  cards: cardProp[];
+}
+
+interface cardProp {
+  icon: string;
+  text: string;
+  title:string;
+}
+function Card({ cards }: cards) {
+  return (
+    <>
+      {cards.map((c,index) => (
+        <div
+        key={index}
+          className="flex p-2 border rounded-lg shadow-md  flex-col items-center 
+    space-y-4 text-sm min-w-20 max-md:min-h-40"
+        >
+          <IconHandler iconName={c.icon} size={30} />
+          <p>{c.title}</p>
+          <p>{c.text}</p>
+        </div>
+      ))}
+    </>
   );
 }

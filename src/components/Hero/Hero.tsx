@@ -1,14 +1,14 @@
 import type { ChangeEvent } from "react";
-import ContentWriter from "./ContentWriter";
-import Engineer from "./Engineer";
+import { motion } from "framer-motion";
+import { heroData } from "../../data/Hero";
 
 interface HeroProps {
-  portfolioType: string;
+  portfolioType: "Chemical Engineer" | "Content Writer";
   handlePortfolioType: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
 interface selectProp {
-  portfolioType: string;
+  portfolioType: "Chemical Engineer" | "Content Writer";
   handlePortfolioTypeChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -16,6 +16,25 @@ export default function Hero({
   portfolioType,
   handlePortfolioType,
 }: HeroProps) {
+  const data = heroData.find((h) => h.type === portfolioType);
+
+  const getAnimation = (type: string) => {
+    switch (type) {
+      case "float":
+        return { animate: { y: [0, -15, 0] } };
+      case "rotate":
+        return { animate: { rotate: [0, 15, -15, 0] } };
+      case "scale":
+        return { animate: { scale: [1, 1.2, 1] } };
+      case "fade":
+        return { animate: { opacity: [0.3, 1, 0.3] } };
+      case "custom":
+        return { animate: { y: [0, -15, 0], x: [0, 5, 0] } };
+      default:
+        return { animate: {} };
+    }
+  };
+
   return (
     <div
       className={`w-full min-h-[90dvh]  ${
@@ -24,48 +43,121 @@ export default function Hero({
           : "bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800"
       }`}
     >
-      <div className="flex flex-col items-center justify-center gap-5 mb-10">
+      <div className="flex flex-col items-center justify-center gap-5">
         {/* select wrapper */}
         <div className="flex flex-col md:flex-row gap-3 md:gap-2 items-start md:items-center mt-10">
-          <h1 className="text-xl sm:text-2xl font-bold leading-snug text-white">
+          <h1 className="text-lg sm:text-xl font-bold leading-snug text-white">
             Hello, I'm{" "}
             <span
-              className={`${
+              className={`text-2xl ${
                 portfolioType === "Chemical Engineer"
                   ? "text-sky-200"
                   : "text-orange-400"
               } font-extrabold`}
             >
-              Maryam
+              Maryam Elsheikh
             </span>
             , I'm a
           </h1>
 
           <div className="text-lg sm:text-xl font-semibold">
-            <Select handlePortfolioTypeChange={handlePortfolioType} portfolioType={portfolioType} />
+            <Select
+              handlePortfolioTypeChange={handlePortfolioType}
+              portfolioType={portfolioType}
+            />
           </div>
         </div>
         {/* end select wrapper */}
       </div>
       {/* portfolio */}
-      <div className="flex justify-center items-center transition-all duration-500 ease-in-out bg-a-900">
-        {portfolioType === "Chemical Engineer" ? (
-          <Engineer />
-        ) : (
-          <ContentWriter />
-        )}
-      </div>
+      <section
+        className={`flex flex-col  items-center rounded py-4 ${data?.bgGradient}`}
+      >
+        {/* text + image */}
+        <div className="flex flex-col md:flex-row max-md:justify-between max-md:gap-10 sm:gap-10 px-4 sm:px-8 py-5 sm:py-8 mb-10">
+          <div className="w-full md:w-1/2">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+              {data?.title}
+            </h2>
+            <p className="text-gray-200 leading-relaxed sm:leading-8 text-base sm:text-lg">
+              {data?.type === "Chemical Engineer" ? (
+                <p >
+                  {data.description}
+                </p>
+              ) : (
+                <div
+                  dangerouslySetInnerHTML={{ __html: data?.description || ""}}
+                />
+              )}
+            </p>
+          </div>
+          {/* image + floating icons */}
+          <div className="relative w-fit mx-auto flex justify-center items-center">
+            {/* glow */}
+            <motion.div
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ repeat: Infinity, duration: 3 }}
+              className={`absolute w-64 h-64 rounded-full ${data?.glowColor} blur-3xl opacity-40`}
+            />
+
+            {/* main image */}
+            <img
+              src={data?.heroImg}
+              alt="hero"
+              className="relative w-60 h-60 rounded-full border-4 border-white shadow-xl object-cover z-1"
+            />
+
+            {/* floating icons */}
+            {data?.floatingIcons.map((icon, i) => {
+              const { animate } = getAnimation(icon.animation);
+              return (
+                <motion.img
+                  key={i}
+                  src={icon.src}
+                  alt={icon.alt}
+                  className={icon.className}
+                  animate={animate}
+                  transition={{
+                    repeat: Infinity,
+                    duration: icon.duration,
+                    ease: "easeInOut",
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
+        {/* buttons */}
+        <div className="flex gap-10 max-sm:gap-5 max-sm:px-3">
+          {data?.buttons.map((btn, i) =>
+            btn.download ? (
+              <a key={i} href={btn.href} download className={btn.style}>
+                {btn.label}
+                
+              </a>
+            ) : (
+              <a key={i} href={btn.href} className={btn.style}>
+                {btn.label}
+              </a>
+            )
+          )}
+        </div>
+      </section>
     </div>
   );
 }
 
 // select component
-export function Select({ handlePortfolioTypeChange , portfolioType}: selectProp) {
+export function Select({
+  handlePortfolioTypeChange,
+  portfolioType,
+}: selectProp) {
   return (
     <select
       name="meAs"
       className="border px-2 py-1 mt-2 md:mt-0 text-center text-white bg-black/60 focus:outline-orange-500 border-orange-300 rounded cursor-pointer w-full md:w-auto"
-      onChange={handlePortfolioTypeChange} value={portfolioType}
+      onChange={handlePortfolioTypeChange}
+      value={portfolioType}
     >
       <option value="Chemical Engineer">Chemical Engineer</option>
       <option value="Content Writer">Content Writer</option>

@@ -1,31 +1,6 @@
-export default function WorkExperienceWriter() {
-  const experiences = [
-    {
-      role: "Marketing Team Supervisor",
-      company: "Marciel Marketing Company",
-      date: "12/2024 – Present",
-      description:
-        "Working remotely, I oversee the planning, management, and execution of content strategies. Lead a team of creators to produce brand-aligned content, optimize workflows, review and edit, and ensure message consistency across all channels.",
-      src: "marciel.jpg",
-    },
-    {
-      role: "Content Writer (Volunteer)",
-      company: "TEDx WadMadani",
-      date: "2021",
-      description:
-        "Volunteered as a content writer remotely, created 15+ posts supporting the conference, managed the Facebook page, and increased followers by 50%.",
-      src: "tedEx.jpg",
-    },
-    {
-      role: "Articles Writer",
-      company: "Akerlahza Newspaper",
-      date: "12/2019 – 12/2020",
-      description:
-        "Worked remotely as a weekly articles writer focusing on women’s issues and community problems. Developed skills in research, analysis, and creative report writing.",
-      src: "akherLahza.jpg",
-    },
-  ];
-
+import { WorkData } from "../../data/Work";
+export default function WorkExperienceWriter({portfolioType}: {portfolioType: "Content Writer"}) {
+  const data = WorkData[portfolioType].experience;
   return (
     <section
       id="experience"
@@ -65,12 +40,12 @@ export default function WorkExperienceWriter() {
         className={`grid gap-8 md:grid-cols-2`}
         style={{ gridAutoRows: "1fr" }}
       >
-        {experiences.map((exp, index) => (
+        {data.map((exp, index) => (
           <div
             key={index}
             className={`${
               // If last card in odd count → span full width
-              index === experiences.length - 1 && experiences.length % 2 !== 0
+              index === data.length - 1 && data.length % 2 !== 0
                 ? "md:col-span-2"
                 : ""
             } border  border-gray-700 rounded-2xl p-8 shadow-sm hover:shadow-lg transition bg-orange-950`}

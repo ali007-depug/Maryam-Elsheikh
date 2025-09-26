@@ -8,10 +8,12 @@ import Gallary from "./components/Gallary/Gallary";
 import FloatingSelect from "./components/FloatingSelect";
 import ContactMe from "./components/Contact/ContactMe";
 function App() {
-  const [portfolioType, setPortfolioType] = useState("Chemical Engineer");
+  const [portfolioType, setPortfolioType] = useState<
+    "Chemical Engineer" | "Content Writer"
+  >("Chemical Engineer");
 
   const handlePortfolioType = (e: ChangeEvent<HTMLSelectElement>) => {
-    setPortfolioType(e.target.value);
+    setPortfolioType(e.target.value as "Chemical Engineer" | "Content Writer");
   };
 
   const headerMenu = [
@@ -31,7 +33,10 @@ function App() {
   return (
     <div className="min-h-[100dvh] scroll-smooth">
       {/* floatin select */}
-      <FloatingSelect handlePortfolioType={handlePortfolioType} portfolioType={portfolioType}/>
+      <FloatingSelect
+        handlePortfolioType={handlePortfolioType}
+        portfolioType={portfolioType}
+      />
       {/* header */}
       <Header
         name="Maryam Elsheikh"
@@ -49,16 +54,16 @@ function App() {
 
       {/* work experience */}
       {portfolioType === "Chemical Engineer" ? (
-        <WorkExperience />
+        <WorkExperience portfolioType={portfolioType} />
       ) : (
-        <WorkExperienceWriter />
+        <WorkExperienceWriter portfolioType={portfolioType} />
       )}
 
       {/* <Gallary/> */}
-      {portfolioType === 'Content Writer' && <Gallary/>}
+      {portfolioType === "Content Writer" && <Gallary />}
 
       {/* contact */}
-      <ContactMe portfolioType={portfolioType}/>
+      <ContactMe portfolioType={portfolioType} />
     </div>
   );
 }
