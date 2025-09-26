@@ -5,6 +5,7 @@ import { GrGroup } from "react-icons/gr";
 import { FaPenAlt } from "react-icons/fa";
 import { FaBookReader } from "react-icons/fa";
 import { FaChessQueen } from "react-icons/fa6";
+import { LuPenTool } from "react-icons/lu";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
@@ -22,6 +23,7 @@ export type IconName =
   | "FaChessQueen"
   | "FaFacebook"
   | "FaLinkedin"
+  | "FaLuPenTool";
 
 interface IconHandlerProps {
   iconName: IconName | string;
@@ -39,7 +41,8 @@ const iconMap: Record<IconName, React.ComponentType<any>> = {
   FaBookReader
   ,FaChessQueen,
   FaFacebook,
-  FaLinkedin
+  FaLinkedin,
+  LuPenTool
 };
 
 export function IconHandler({

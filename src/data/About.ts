@@ -15,7 +15,7 @@ export const aboutData = {
         title: "Education",
         text: "Graduated from University of Gezira (UofG) in 2022.",
                 iconColor: "black",
-        textColor: "text-gray-900",
+        color: "gray-900",
 
       },
       {
@@ -23,7 +23,7 @@ export const aboutData = {
         title: "Chemical Engineer",
         text: "Has a Bachelor's degree in Chemical Engineering.",
                 iconColor: "black",
-        textColor: "text-gray-900",
+        color: "gray-900",
 
       },
       {
@@ -31,7 +31,7 @@ export const aboutData = {
         title: "Collaborative Skills",
         text: "Effective team collaborator with strong group project management skills.",
                 iconColor: "black",
-        textColor: "text-gray-900",
+        color: "gray-900",
 
       },
       {
@@ -39,7 +39,7 @@ export const aboutData = {
         title: "Highly Skilled",
         text: "Curious learner constantly exploring new technologies and creative possibilities.",
         iconColor: "black",
-        textColor: "text-gray-900",
+        color: "gray-900",
       },
     ],
 
@@ -67,28 +67,28 @@ export const aboutData = {
         title: "Writer",
         text: "Writing with clarity, creativity, and purpose for target audiences.",
         iconColor: "orange",
-        textColor: "text-orange-800",
+        color: "orange-800",
       },
       {
         icon: "FaBookReader",
         title: "Reader",
         text: "Curious reader always exploring new perspectives through literature.",
         iconColor: "orange",
-        textColor: "text-orange-800",
+        color: "orange-800",
       },
       {
         icon: "FaChessQueen",
         title: "Infulencer",
         text: "Skilled at shaping perspectives and motivating audiences toward action.",
         iconColor: "orange",
-        textColor: "text-orange-800",
+        color: "orange-800",
       },
       {
-        icon: "FaPenAlt",
+        icon: "LuPenTool",
         title: "Calligraphy Skills",
         text: "Transforming Arabic words into visual art through skilled penmanship.",
         iconColor: "orange",
-        textColor: "text-orange-800",
+        color: "orange-800",
       },
     ],
     pButton: {

@@ -16,9 +16,9 @@ export default function About({
       {/* Heading wrapper */}
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
         {/* Background text */}
-        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 -z-10 w-full">
+        <div className="absolute max-sm: -top-8 left-1/2 transform -translate-x-1/2 -z-10 w-full">
           <span
-            className={`text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold opacity-30 tracking-widest select-none ${
+            className={`text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold opacity-10 tracking-widest select-none ${
               portfolioType === "Chemical Engineer"
                 ? "text-gray-600"
                 : "text-orange-700"
@@ -73,7 +73,11 @@ export default function About({
             : "bg-orange-600 hover:bg-orange-700"
         }`}
       >
-        <IconHandler iconName={pButton.imgSrc} color={pButton.iconColor} size={25}/>
+        <IconHandler
+          iconName={pButton.imgSrc}
+          color={pButton.iconColor}
+          size={25}
+        />
         {pButton.text}
       </a>
     </section>
@@ -87,22 +91,22 @@ interface cards {
 interface cardProp {
   icon: string;
   text: string;
-  title:string;
-  iconColor:string,
-  textColor:string,
+  title: string;
+  iconColor: string;
+  color: string;
 }
 function Card({ cards }: cards) {
   return (
     <>
-      {cards.map((c,index) => (
+      {cards.map((c, index) => (
         <div
-        key={index}
-          className="flex p-2 border rounded-lg shadow-md  flex-col items-center 
-    space-y-4 text-sm min-w-20 max-md:min-h-40"
+          key={index}
+          className={`flex p-2 border border-${c.color} rounded-lg shadow-md  flex-col items-center 
+    space-y-4 text-sm min-w-20 max-md:min-h-40 hover:scale-105 transition-transform duration-300`}
         >
           <IconHandler iconName={c.icon} color={c.iconColor} size={30} />
-          <p className={`${c.textColor} font-semibold`}>{c.title}</p>
-          <p className={`${c.textColor} font-semibold`}>{c.text}</p>
+          <p className={`text-${c.color} font-semibold`}>{c.title}</p>
+          <p className={`text-${c.color} font-semibold`}>{c.text}</p>
         </div>
       ))}
     </>
