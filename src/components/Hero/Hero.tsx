@@ -37,7 +37,7 @@ export default function Hero({
 
   return (
     <div
-      className={`w-full min-h-[90dvh]  ${
+      className={`w-full min-h-[90dvh] outline outline-red-400 relative top-[64px] ${
         portfolioType === "Chemical Engineer"
           ? "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700"
           : "bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800"

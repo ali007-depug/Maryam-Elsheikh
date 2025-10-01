@@ -19,7 +19,7 @@ const data = WorkData[portfolioType].experience;
 
   return (
     <section
-      id="work"
+      id="works"
       className="bg-gradient-to-r  from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 px-6"
     >
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">

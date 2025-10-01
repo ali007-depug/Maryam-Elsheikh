@@ -4,103 +4,130 @@ import { motion, AnimatePresence } from "framer-motion";
 interface HeaderProps {
   name: string;
   avatarSrc?: string;
-  links: { label: string; href: string }[];
-  portfolioType:"Chemical Engineer" | "Content Writer";
+  portfolioType: "Chemical Engineer" | "Content Writer";
 }
 
-const Header: React.FC<HeaderProps> = ({ name, avatarSrc, links,portfolioType }) => {
+const Header: React.FC<HeaderProps> = ({ name, avatarSrc, portfolioType }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const headerMenu =
+    portfolioType === "Chemical Engineer"
+      ? [
+          { label: "Home", href: "#" },
+          { label: "About", href: "#about" },
+          { label: "Works", href: "#works" },
+          { label: "Contact", href: "#contact" },
+        ]
+      : [
+          { label: "Home", href: "#" },
+          { label: "About", href: "#about" },
+          { label: "Works", href: "#works" },
+          { label: "Gallery", href: "#gallery" },
+          { label: "Contact", href: "#contact" },
+        ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="px-3 md:px-10  w-full z-3 bg-white overflow-hidden">
+    <header
+      className={`px-3 md:px-10 w-full z-90 fixed top-0 text-white ${
+        portfolioType === "Chemical Engineer"
+          ? "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700"
+          : "bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800"
+      }`}
+    >
       <div className="mx-auto flex justify-between items-center h-16">
-        
-        {/* Avatar */}
+        {/* Avatar + Name */}
         <div className="flex items-center space-x-2">
           {avatarSrc ? (
             <img
               src={avatarSrc}
               alt={name}
-              className="w-10 h-10 rounded-full object-cover"
+              className="w-10 h-10 outline rounded-full object-cover"
             />
           ) : (
-            <div className="w-10 h-10 rounded-full bg-orange-400 text-white flex items-center justify-center font-bold text-lg">
+            <div className="w-10 h-10 rounded-full bg-orange-400 flex items-center justify-center font-bold text-lg">
               {name.charAt(0).toUpperCase()}
             </div>
           )}
-          <div className="flex flex-col">
-          <span className="font-bold text-orange600">{name}</span>
-          <span className="font-semibold text-xs text-orange-00">{portfolioType}</span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-bold">{name}</span>
+            <span className="font-semibold text-xs text-gray-300">
+              {portfolioType}
+            </span>
           </div>
         </div>
 
-        {/* Desktop Links */}
-        <nav className="hidden sm:flex space-x-6">
-          {links.map((link, idx) => (
+        {/* Desktop Menu */}
+        <nav className="hidden sm:flex space-x-6 ">
+          {headerMenu.map((link, idx) => (
             <a
               key={idx}
               href={link.href}
-              className="hover:text-orange-500 font-bold transition-colors"
+              className={`font-bold  py-2 capitalize transition-all ${portfolioType === "Chemical Engineer" ? 'hover:border-b hover:border-b-gray-400' : 'hover:border-b hover:border-b-orange-200'} `}
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* Hamburger / X Button */}
+        {/* Hamburger */}
         <button
           onClick={toggleMenu}
-          className="sm:hidden relative w-6 h-6 flex flex-col justify-center items-center focus:outline-none z-200"
+          className="sm:hidden relative w-6 h-6 flex flex-col justify-center items-center z-30"
         >
           {isOpen ? (
-            // X icon
-            // <GrClose className="bg-red-200 z-200 "/>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-white z-100"
+              className="h-6 w-6 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           ) : (
-            // Hamburger icon
             <>
-              <span className={`w-6 h-0.5 ${portfolioType === 'Chemical Engineer' ? 'bg-gray-700' : 'bg-orange-400'} mb-1`}></span>
-              <span className={`w-6 h-0.5 ${portfolioType === 'Chemical Engineer' ? 'bg-gray-700' : 'bg-orange-400'} mb-1`}></span>
-              <span className={`w-6 h-0.5 ${portfolioType === 'Chemical Engineer' ? 'bg-gray-700' : 'bg-orange-400'}`}></span>
+              <span className="w-6 h-0.5 bg-white mb-1" />
+              <span className="w-6 h-0.5 bg-white mb-1" />
+              <span className="w-6 h-0.5 bg-white" />
             </>
           )}
         </button>
       </div>
 
-      {/* Mobile Menu Overlay with Spring Animation */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-99 bg-black/50  sm:hidden"
+            className="fixed inset-0 z-20 bg-black/50 sm:hidden"
             onClick={toggleMenu}
           >
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className={`absolute right-0 top-0 h-full w-[40%] ${portfolioType === 'Chemical Engineer' ? 'bg-gray-700' : 'bg-[#ff914d]'} p-6 flex flex-col space-y-4`}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              className={`absolute right-0 top-0 py-20 text-center h-full w-3/4 max-w-xs ${
+                portfolioType === "Chemical Engineer"
+                  ? "bg-gray-700"
+                  : "bg-orange-600"
+              } p-8 flex flex-col space-y-6`}
               onClick={(e) => e.stopPropagation()}
             >
-              {links.map((link, idx) => (
+              {headerMenu.map((link, idx) => (
                 <a
                   key={idx}
                   href={link.href}
-                  className="text-white relative top-10 text-center hover:text-gray-200 transition-colors"
+                  className="text-white text-lg font-semibold capitalize hover:text-orange-300 transition-colors"
                   onClick={toggleMenu}
                 >
                   {link.label}

@@ -3,7 +3,7 @@ export default function WorkExperienceWriter({portfolioType}: {portfolioType: "C
   const data = WorkData[portfolioType].experience;
   return (
     <section
-      id="work"
+      id="works"
       className="bg-gradient-to-br from-orange-800 via-orange-900 to-orange-950 py-20 px-6"
     >
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">

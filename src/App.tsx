@@ -16,20 +16,6 @@ function App() {
     setPortfolioType(e.target.value as "Chemical Engineer" | "Content Writer");
   };
 
-  const headerMenu = [
-    {
-      label: "Home",
-      href: "#",
-    },
-    {
-      label: "About",
-      href: "#about",
-    },
-    {
-      label: "Works",
-      href: "#works",
-    },
-  ];
   return (
     <div className="min-h-[100dvh] scroll-smooth">
       {/* floatin select */}
@@ -40,7 +26,6 @@ function App() {
       {/* header */}
       <Header
         name="Maryam Elsheikh"
-        links={headerMenu}
         portfolioType={portfolioType}
         avatarSrc="avatar2.jpg"
       />
