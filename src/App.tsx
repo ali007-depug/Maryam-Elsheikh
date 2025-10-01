@@ -27,7 +27,7 @@ function App() {
       <Header
         name="Maryam Elsheikh"
         portfolioType={portfolioType}
-        avatarSrc="avatar2.jpg"
+        avatarSrc="avatar2.webp"
       />
       {/* hero */}
       <Hero
