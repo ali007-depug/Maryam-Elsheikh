@@ -6,13 +6,15 @@ interface CounterProps {
   to: number;
   duration?: number; // in seconds
   label?: string;
+  sign?:string
 }
 
 export default function Counter({
   from = 0,
   to,
-  duration = 2,
+  duration = 2.5,
   label,
+  sign
 }: CounterProps) {
   const [count, setCount] = useState(from);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -56,7 +58,7 @@ export default function Counter({
         animate={inView ? { scale: 1, opacity: 1 } : {}}
         transition={{ duration: 0.5 }}
       >
-        +{count}
+        {count >= 1000 ? (count / 1000) + "K": count}{sign}
       </motion.span>
       {label && <span className="text-gray-600 mt-2 text-lg">{label}</span>}
     </div>

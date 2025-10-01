@@ -1,4 +1,6 @@
+import { LuInstagram } from "react-icons/lu";
 import ImgSlider from "./ImgSlider";
+import SocialMedia from "./SocialMedia";
 
 export default function Gallary() {
   return (
@@ -43,9 +45,12 @@ export default function Gallary() {
           rel="noopener noreferrer"
           className="flex w-fit mx-auto items-center justify-center gap-3 mt-5 bg-orange-700 text-white px-6 py-3 rounded-lg shadow hover:bg-orange-800 transition font-bold"
         >
-        <img src="instagram.png" alt="instagram icon" width={30} height={30} className="size-8"/>
+        <LuInstagram size={30} color="#eee"/>
           View More On Instagram
+
         </a>
+        {/* social media */}
+        <SocialMedia/>
     </section>
   );
 }
