@@ -5,20 +5,20 @@ import SocialMedia from "./SocialMedia";
 export default function Gallary() {
   return (
     <section
-      id="gallary"
+      id="gallery"
       className="bg-gray-200 py-20 md:px-6"
     >
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">
         {/* Background text */}
         <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-11 w-full">
           <span className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold  opacity-10 tracking-widest select-none text-orange-500">
-            GALLARY
+            GALLERY
           </span>
         </div>
 
         {/* Main heading */}
         <h1 className="text-center font-bold text-4xl sm:text-5xl lg:text-6xl text-orange-600 relative">
-          Gallary
+          Gallery
         </h1>
       </div>
       {/* small desc */}
@@ -31,7 +31,7 @@ export default function Gallary() {
           as a creative outlet. Through calligraphy, I explore the beauty of
           words, blending art with expression. Each piece reflects not just
           language, but
-          <span className="italic text-gray-100">
+          <span className="italic ">
             {" "}
             rhythm, culture, and emotion
           </span>

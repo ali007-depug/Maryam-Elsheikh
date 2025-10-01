@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, portfolioType }) => {
 
   return (
     <header
-      className={`px-3 md:px-10 w-full z-90 fixed top-0 text-white ${
+      className={`px-3 md:px-10 w-full z-90 fixed top-0  text-white ${
         portfolioType === "Chemical Engineer"
           ? "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700"
           : "bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800"
@@ -59,12 +59,12 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, portfolioType }) => {
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden sm:flex space-x-6 ">
+        <nav className="hidden sm:flex space-x-6 sm:min-h-18 sm:items-center outlin ">
           {headerMenu.map((link, idx) => (
             <a
               key={idx}
               href={link.href}
-              className={`font-bold  py-2 capitalize transition-all ${portfolioType === "Chemical Engineer" ? 'hover:border-b hover:border-b-gray-400' : 'hover:border-b hover:border-b-orange-200'} `}
+              className={`font-bold capitalize  sm:py-3 transition-all ${portfolioType === "Chemical Engineer" ? 'hover:border-b-2 hover:border-b-gray-400' : 'hover:border-b hover:border-b-orange-200'} `}
             >
               {link.label}
             </a>

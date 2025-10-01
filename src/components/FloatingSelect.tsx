@@ -32,11 +32,11 @@ export default function FloatingSelect({
 
   return (
     <div
-      className={`w-50  ${
+      className={` ${
         portfolioType === "Chemical Engineer"
           ? "bg-black/80"
           : "bg-orange-700/80 border-white"
-      } border p-3 right-5 bottom-1 fixed z-99 flex flex-col transition-all duration-300 ease-in-out items-center gap-2 rounded-md ${
+      } border p-3 right-5 bottom-1 fixed z-99 flex max-md:flex-col transition-all duration-300 ease-in-out items-center gap-2 rounded-md ${
         showFloatingSelect ? "opacity-100 visible" : "opacity-0"
       }`}
     >

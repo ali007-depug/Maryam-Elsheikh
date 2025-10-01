@@ -7,7 +7,7 @@ interface HeroProps {
   handlePortfolioType: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-interface selectProp {
+interface SelectProp {
   portfolioType: "Chemical Engineer" | "Content Writer";
   handlePortfolioTypeChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
@@ -36,16 +36,17 @@ export default function Hero({
   };
 
   return (
-    <div
-      className={`w-full min-h-[90dvh] outline outline-red-400 relative top-[64px] ${
+    <main
+      className={`w-full min-h-[90dvh] relative top-[64px] ${
         portfolioType === "Chemical Engineer"
           ? "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700"
           : "bg-gradient-to-r from-orange-950 via-orange-900 to-orange-800"
       }`}
+      role="main"
     >
-      <div className="flex flex-col items-center justify-center gap-5">
-        {/* select wrapper */}
-        <div className="flex flex-col md:flex-row gap-3 md:gap-2 items-center mt-10">
+      <div className="flex flex-col items-center justify-center gap-5 px-3 sm:px-6">
+        {/* Select wrapper */}
+        <div className="flex flex-col md:flex-row gap-3 md:gap-2 items-center mt-10 text-center md:text-left">
           <h1 className="text-lg sm:text-xl font-bold leading-snug text-white">
             Hello, I'm{" "}
             <span
@@ -69,28 +70,32 @@ export default function Hero({
         </div>
         {/* end select wrapper */}
       </div>
-      {/* portfolio */}
+
+      {/* Portfolio */}
       <section
-        className={`flex flex-col  items-center rounded py-4 ${data?.bgGradient}`}
+        className={`flex flex-col items-center rounded py-6 sm:py-8 px-3 ${data?.bgGradient}`}
+        aria-labelledby="portfolio-heading"
       >
-        {/* text + image */}
-        <div className="flex flex-col md:flex-row max-md:justify-between max-md:gap-10 sm:gap-10 px-4 sm:px-8 py-5 sm:py-8 mb-10">
+        <div className="flex flex-col md:flex-row gap-10 sm:gap-12 w-full max-w-6xl">
+          {/* text */}
           <div className="w-full md:w-1/2">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+            <h2
+              id="portfolio-heading"
+              className="text-2xl md:text-3xl font-bold text-white mb-4 text-center md:text-left"
+            >
               {data?.title}
             </h2>
-            <p className="text-gray-200 leading-relaxed sm:leading-8 text-base sm:text-lg">
+            <div className="text-gray-200 leading-relaxed sm:leading-8 text-base sm:text-lg text-center md:text-left">
               {data?.type === "Chemical Engineer" ? (
-                <p >
-                  {data.description}
-                </p>
+                <p>{data.description}</p>
               ) : (
                 <div
-                  dangerouslySetInnerHTML={{ __html: data?.description || ""}}
+                  dangerouslySetInnerHTML={{ __html: data?.description || "" }}
                 />
               )}
-            </p>
+            </div>
           </div>
+
           {/* image + floating icons */}
           <div className="relative w-fit m-auto flex justify-center items-center">
             {/* glow */}
@@ -98,6 +103,7 @@ export default function Hero({
               animate={{ scale: [1, 1.1, 1] }}
               transition={{ repeat: Infinity, duration: 3 }}
               className={`absolute w-64 h-64 rounded-full ${data?.glowColor} blur-3xl opacity-40`}
+              aria-hidden="true"
             />
 
             {/* main image */}
@@ -127,34 +133,49 @@ export default function Hero({
             })}
           </div>
         </div>
+
+
         {/* buttons */}
-        <div className="flex gap-10 max-sm:gap-5 max-sm:px-3">
+        <div className="flex flex-wrap justify-center gap-6 mt-8">
           {data?.buttons.map((btn, i) =>
             btn.download ? (
-              <a key={i} href={btn.href} download className={btn.style}>
+              <a
+                key={i}
+                href={btn.href}
+                download
+                className={btn.style}
+                aria-label={`Download ${btn.label}`}
+              >
                 {btn.label}
-                
               </a>
             ) : (
-              <a key={i} href={btn.href} className={btn.style}>
+              <a
+                key={i}
+                href={btn.href}
+                className={btn.style}
+                aria-label={`Go to ${btn.label}`}
+              >
                 {btn.label}
               </a>
             )
           )}
         </div>
       </section>
-    </div>
+    </main>
   );
 }
 
-// select component
-export function Select({
-  handlePortfolioTypeChange,
-  portfolioType,
-}: selectProp) {
+// Select component
+export function Select({ handlePortfolioTypeChange, portfolioType }: SelectProp) {
   return (
+    <>
+    <label className="sr-only" htmlFor="portfolio-select">
+      Select Portfolio Type
+    </label>
     <select
-      name="meAs"
+      id="portfolio-select"
+      name="portfolio"
+      aria-label="Select portfolio type"
       className="border px-2 py-1 mt-2 md:mt-0 text-center text-white bg-black/60 focus:outline-orange-500 border-orange-300 rounded cursor-pointer w-full md:w-auto"
       onChange={handlePortfolioTypeChange}
       value={portfolioType}
@@ -162,5 +183,12 @@ export function Select({
       <option value="Chemical Engineer">Chemical Engineer</option>
       <option value="Content Writer">Content Writer</option>
     </select>
+    </>
   );
 }
+
+
+
+
+
+

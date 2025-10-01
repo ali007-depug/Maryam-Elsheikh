@@ -53,7 +53,7 @@ const data = WorkData[portfolioType].experience;
         </p>
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 ">
+      <div className="relative max-w-6xl mx-auto px-6">
         {/* Vertical timeline line */}
         <div className="absolute left-1/2 top-0 h-full w-1  bg-white transform -translate-x-1/2"></div>
 
@@ -65,12 +65,12 @@ const data = WorkData[portfolioType].experience;
               whileInView={{ opacity: 1, y: 0, x: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
-              className={`relative flex flex-col sm:flex-row ${
-                index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
+              className={`relative flex flex-col lg:flex-row ${
+                index % 2 === 0 ? "lg:justify-start" : "lg:justify-end"
               }`}
             >
               {/* Dot */}
-              <span className="absolute left-1/2 max-sm:top-1 top-4 w-5 h-5 rounded-full max-md:bg-gray-300 bg-gray-800 border-4 max-md:border-orange-500 border-white transform -translate-x-1/2"></span>
+              <span className="absolute left-1/2 max-sm:top-1 top-4 w-5 h-5 rounded-full bg-gray-800 border-4  border-white transform -translate-x-1/2"></span>
 
               {/* Card */}
               <WorkCard exp={exp} index={index} />
@@ -86,8 +86,8 @@ function WorkCard({ exp, index }: workCardProps) {
   return (
     // card wrapper
     <div
-      className={`bg-gray-700 shadow shadow-gray-700 border border-gray-400 rounded-2xl p-6 sm:p-8 w-full md:w-5/12 hover:scale-105 transition-all duration-200 ease-in-out ${
-        index % 2 === 0 ? "sm:mr-auto" : "sm:ml-auto"
+      className={`bg-gray-700 shadow shadow-gray-700 border border-gray-400 rounded-2xl p-6 sm:p-8 w-full lg:w-5/12 lg:hover:scale-105 transition-all duration-200 ease-in-out ${
+        index % 2 === 0 ? "lg:mr-auto" : "lg:ml-auto"
       }`}
     >
       {/* card role + data */}

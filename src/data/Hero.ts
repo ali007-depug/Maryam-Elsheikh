@@ -72,13 +72,13 @@ export const heroData: HeroData[] = [
         href: "maryam_enginner_Cv.pdf",
         download: true,
         style:
-          "px-4 py-5 bg-white font-semibold rounded-lg shadow-md hover:bg-gray-400 hover:text-white transition-all duration-300 ease-in-out",
+          "px-4 py-5 bg-white font-semibold rounded-lg shadow-md hover:bg-gray-400 hover:text-white transition-all duration-300 ease-in-out min-w-20",
       },
       {
         label: "Explore my Work",
-        href: "#work",
+        href: "#works",
         style:
-          "px-4 py-5 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-gray-500 transition-all duration-300 ease-in-out",
+          "px-4 py-5 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-gray-500 transition-all duration-300 ease-in-out min-w-[182px] text-center",
       },
     ],
   },
@@ -157,9 +157,9 @@ export const heroData: HeroData[] = [
       },
       {
         label: "Explore my Work",
-        href: "#work",
+        href: "#works",
         style:
-          "px-4 py-5 bg-white font-semibold rounded-lg shadow-md hover:bg-orange-200 transition-all duration-300 ease-in-out",
+          "px-4 py-5 bg-white font-semibold rounded-lg shadow-md hover:bg-orange-200 transition-all duration-300 ease-in-out min-w-[182px]",
       },
     ],
   },
