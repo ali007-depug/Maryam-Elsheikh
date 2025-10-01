@@ -170,9 +170,9 @@ export default function Hero({
 export function Select({ handlePortfolioTypeChange, portfolioType }: SelectProp) {
   return (
     <>
-    <label className="sr-only" htmlFor="portfolio-select">
+    <span className="sr-only" aria-label="portfolio-select">
       Select Portfolio Type
-    </label>
+    </span>
     <select
       id="portfolio-select"
       name="portfolio"

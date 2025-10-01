@@ -75,6 +75,7 @@ const Header: React.FC<HeaderProps> = ({ name, avatarSrc, portfolioType }) => {
         <button
           onClick={toggleMenu}
           className="sm:hidden relative w-6 h-6 flex flex-col justify-center items-center z-30"
+          aria-label="Toggle menu"
         >
           {isOpen ? (
             <svg
