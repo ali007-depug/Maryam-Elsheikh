@@ -111,6 +111,7 @@ export default function Hero({
               src={data?.heroImg}
               alt="hero"
               className="relative w-60 h-60 rounded-full border-4 border-white shadow-xl object-cover z-1"
+              fetchPriority="high"
             />
 
             {/* floating icons */}
