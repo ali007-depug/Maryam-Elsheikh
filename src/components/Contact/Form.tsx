@@ -11,6 +11,7 @@ export default function Form({portfolioType}:{portfolioType:string}) {
     if (!form.current) return;
     setLoading(true);
 
+    
     emailjs
       .sendForm(
         "service_ue37d1g", // e.g. service_xxx
@@ -52,7 +53,7 @@ export default function Form({portfolioType}:{portfolioType:string}) {
           name="user_email"
           id="user_email"
           placeholder="Your Email"
-          className={`h-10 p-2 border ${portfolioType === 'Chemical Engineer' ? 'border-gray-700 focus:outline-gray-900' :'border-orange-900 focus:outline-orange-500'}`}
+          className={`h-10 p-2 border ${portfolioType === 'Chemical Engineer' ? 'border-gray-700 focus:outline-gray-900' :'border-orange-900 focus:outline-orange-500'} user-valid:outline-2 user-valid:outline-green-500 user-valid:border-0 user-invalid:outline-2 user-invalid:outline-red-500 user-invalid:border-0`}
           required
         />
         <textarea
