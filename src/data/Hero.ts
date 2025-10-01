@@ -34,7 +34,7 @@ export const heroData: HeroData[] = [
     with 1+ years of training and courses. I trained as a 
     Quality Control Engineer at Sudanese Standard Metrology Organization 
     and Azal Pharma Company.`,
-    heroImg: "hero.jpeg",
+    heroImg: "hero.webp",
     glowColor: "bg-gray-400",
     floatingIcons: [
       {
@@ -115,7 +115,7 @@ export const heroData: HeroData[] = [
         </li>
       </ul>
     `,
-    heroImg: "hero.jpeg",
+    heroImg: "hero.webp",
     glowColor: "bg-orange-600",
     floatingIcons: [
       {
