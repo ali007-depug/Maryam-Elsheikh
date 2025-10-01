@@ -92,9 +92,9 @@ function WorkCard({ exp, index }: workCardProps) {
     >
       {/* card role + data */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-        <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+        <p className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
           {exp.role}
-        </h3>
+        </p>
         <span className="text-sm text-gray-200 mt-1 sm:mt-0">
           {exp.date}
         </span>
