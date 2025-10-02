@@ -34,7 +34,7 @@ function App() {
   if (isLoading) {
     return (
       <div
-        className={`fixed inset-0 flex flex-col items-center justify-center bg-gray-900 text-white transition-opacity duration-400 ${
+        className={`fixed inset-0 flex flex-col items-center justify-center bg-gray-900 text-white transition-opacity duration-300 ${
           fadeOut ? "opacity-0" : "opacity-100"
         }`}
       >
