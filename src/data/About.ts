@@ -1,7 +1,7 @@
 export const aboutData = {
   "Chemical Engineer": {
     about: [
-      `I'm <span class="highlight">Maryam</span>, a Chemical Engineer who graduated of University of Gezira. My academic journey has equipped me with a solid foundation in chemical processes, problem-solving, and analytical thinking, allowing me to approach challenges with both creativity and precision.`,
+      `I'm <span class="highlight">Maryam</span>, a Chemical Engineer who graduated from University of Gezira. My academic journey has equipped me with a solid foundation in chemical processes, problem-solving, and analytical thinking, allowing me to approach challenges with both creativity and precision.`,
 
       `Beyond my academic background, I’m passionate about exploring new technologies, staying updated with the latest trends in engineering, and continuously developing my skills. I believe in lifelong learning and enjoy taking on new challenges that push me to grow both personally and professionally.`,
 
