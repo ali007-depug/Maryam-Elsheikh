@@ -11,7 +11,7 @@ export default function About({
   return (
     <section
       id="about"
-      className="mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20"
+      className="mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20 mt-10"
     >
       {/* Heading wrapper */}
       <div className="relative mb-16 sm:mb-20 inline-block w-full text-center">

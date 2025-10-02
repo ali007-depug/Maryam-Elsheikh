@@ -6,6 +6,7 @@ export default function SocialMedia() {
   return (
     <section className="mx-auto mt-10 bg-orang-400/20 shadow-lg rounded-lg p-6 mb-20">
       {/* top section */}
+        <p className="text-lg md:text-2xl mx-auto w-fit mb-5 text-orange-800 font-bold">Social Media Followers</p>
       <div className="flex items-center justify-between max-sm:flex-col max-sm:gap-2.5">
       {/* facebook */}
       <SocialAccount platform="Facebook" count={27000} label="Followers">
