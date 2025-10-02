@@ -27,7 +27,7 @@ function App() {
       <Header
         name="Maryam Elsheikh"
         portfolioType={portfolioType}
-        avatarSrc="avatar2.webp"
+        avatarSrc={`${portfolioType === 'Chemical Engineer' ? 'avatar2.webp' : 'avatar5.webp' } `}
       />
       {/* hero */}
       <Hero
