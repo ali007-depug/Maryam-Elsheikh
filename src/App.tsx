@@ -27,7 +27,7 @@ function App() {
       <Header
         name="Maryam Elsheikh"
         portfolioType={portfolioType}
-        avatarSrc={`${portfolioType === 'Chemical Engineer' ? 'avatar2.webp' : 'avatar5.webp' } `}
+        avatarSrc={`${portfolioType === 'Chemical Engineer' ? 'avatar.webp' : 'avatar2.webp' } `}
       />
       {/* hero */}
       <Hero
