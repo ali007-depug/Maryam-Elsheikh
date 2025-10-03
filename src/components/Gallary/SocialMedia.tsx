@@ -17,7 +17,7 @@ export default function SocialMedia() {
         <FaTelegram />
         </SocialAccount>
       {/* instagram */}
-      <SocialAccount platform="Instagram" count={1040} label="Followers">
+      <SocialAccount platform="Instagram" count={1100} sign="+" label="Followers">
         <LuInstagram />
         </SocialAccount>
       {/* linked in */}
