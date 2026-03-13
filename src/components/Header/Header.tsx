@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface HeaderProps {
@@ -7,7 +7,7 @@ interface HeaderProps {
   portfolioType: "Chemical Engineer" | "Content Writer";
 }
 
-const Header: React.FC<HeaderProps> = ({ name, avatarSrc, portfolioType }) => {
+function Header({ name, avatarSrc, portfolioType }:HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const headerMenu =

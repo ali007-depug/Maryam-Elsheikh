@@ -6,7 +6,7 @@ export default function About({
 }: {
   portfolioType: "Chemical Engineer" | "Content Writer";
 }) {
-  const { about, highlightClass, pButton, cards } = aboutData[portfolioType];
+  const { about, highlightClass, pButton, cards } = aboutData[portfolioType]; // replaced by firestore data
 
   return (
     <section
