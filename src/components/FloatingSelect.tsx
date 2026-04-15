@@ -22,9 +22,9 @@ export default function SideSelect({
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Only show the "Tab" after scrolling down 500px
-      if (currentScrollY > 500) {
+      if (currentScrollY > 500 && currentScrollY < lastScrollY) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -42,7 +42,7 @@ export default function SideSelect({
       <AnimatePresence>
         {isVisible && (
           <motion.div
-            initial={{ x: 100, }}
+            initial={{ x: 100 }}
             animate={{ x: isOpen ? 0 : 170 }} // Peeks out slightly or fully opens
             exit={{ x: 100 }}
             transition={{ type: "spring", damping: 20, stiffness: 200 }}
