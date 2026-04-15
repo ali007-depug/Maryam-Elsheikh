@@ -3,5 +3,5 @@ node_modules
 # Local Netlify folder
 .netlify
 .env
-./lib/firebase.ts
-./lib/imagekit.ts
+/lib/firebase.ts
+/lib/imagekit.ts
