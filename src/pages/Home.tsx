@@ -4,12 +4,12 @@ import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
 import About from "../components/AboutMe/About";
 import WorkExperience from "../components/Work/WorkExperience";
-import WorkExperienceWriter from "../components/Work/WorkExperienceWriter";
 import Gallary from "../components/Gallary/Gallary";
 import FloatingSelect from "../components/FloatingSelect";
 import ContactMe from "../components/Contact/ContactMe";
-export default function Home(){
-      const [portfolioType, setPortfolioType] = useState<
+import Footer from "../components/ui/Footer";
+export default function Home() {
+  const [portfolioType, setPortfolioType] = useState<
     "Chemical Engineer" | "Content Writer"
   >("Chemical Engineer");
 
@@ -57,9 +57,11 @@ export default function Home(){
   }
 
   return (
-    <div className={`min-h-[100dvh] scroll-smooth transition-opacity duration-700 ${
+    <div
+      className={`min-h-[100dvh] scroll-smooth transition-opacity duration-700 ${
         fadeOut ? "opacity-100" : "opacity-0"
-      }`}>
+      }`}
+    >
       {/* floating select */}
       <FloatingSelect
         handlePortfolioType={handlePortfolioType}
@@ -69,31 +71,26 @@ export default function Home(){
       <Header
         name="Maryam Elsheikh"
         portfolioType={portfolioType}
-        avatarSrc={`${
-          portfolioType === "Chemical Engineer" ? "avatar.webp" : "avatar2.webp"
-        } `}
       />
       {/* hero */}
       <Hero
         portfolioType={portfolioType}
-        handlePortfolioType={handlePortfolioType}
+        handlePortfolioTypeChange={handlePortfolioType}
       />
       {/* about */}
       <About portfolioType={portfolioType} />
 
       {/* work experience */}
-      {portfolioType === "Chemical Engineer" ? (
-        <WorkExperience portfolioType={portfolioType} />
-      ) : (
-        <WorkExperienceWriter portfolioType={portfolioType} />
-      )}
+      <WorkExperience portfolioType={portfolioType} />
 
       {/* gallery */}
       {portfolioType === "Content Writer" && <Gallary />}
 
       {/* contact */}
       <ContactMe portfolioType={portfolioType} />
+
+      {/* footer */}
+      <Footer/>
     </div>
   );
-
 }

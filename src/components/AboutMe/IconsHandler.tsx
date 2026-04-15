@@ -29,17 +29,19 @@ interface IconHandlerProps {
   iconName: IconName | string;
   className?: string;
   color?: string;
-  size?: number | string;
+  size?: number ;
 }
+
+// ... your imports ...
 
 const iconMap: Record<IconName, React.ComponentType<any>> = {
   FaGraduationCap,
   FaPenAlt,
   GiChemicalDrop,
   GrGroup,
-  MdOutlineStarPurple500,
-  FaBookReader
-  ,FaChessQueen,
+  MdOutlineStarPurple500, // Ensure this matches exactly
+  FaBookReader,
+  FaChessQueen,
   FaFacebook,
   FaLinkedin,
   LuPenTool
@@ -51,7 +53,16 @@ export function IconHandler({
   color,
   size,
 }: IconHandlerProps) {
-      const IconComponent = iconMap[iconName as IconName];
+  // 1. Get the component from the map
+  const IconComponent = iconMap[iconName as IconName];
+
+  // 2. CRITICAL: If the icon is undefined (not found in map), 
+  // return null or a fallback icon so React doesn't crash.
+  if (!IconComponent) {
+    console.warn(`Icon "${iconName}" not found in iconMap.`);
+    return null; 
+  }
+
   return (
     <IconComponent 
       color={color} 
