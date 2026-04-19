@@ -18,6 +18,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { db, auth } from "../lib/firebase";
 import { motion, AnimatePresence } from "framer-motion";
 import { UserPlus, Loader2, User, Mail, CheckCircle } from "lucide-react";
+import { toast } from "sonner";
 
 const schema = z
   .object({
@@ -50,23 +51,31 @@ export default function Signup() {
     try {
       const userCred = await signup(data.email, data.password);
       const user = userCred.user;
-      
-      const targetCollection = data.email === AdminEmail || data.email === "maryamelsheikh1@gmail.com" ? "admin" : "pending-users";
-      
+
+      const targetCollection =
+        data.email === AdminEmail || data.email === "maryamelsheikh1@gmail.com"
+          ? "admin"
+          : "pending-users";
+
       await setDoc(doc(db, targetCollection, user.uid), {
         name: data.fName,
         email: data.email,
         createdAt: new Date(),
       });
-
+      console.log("User document created in Firestore");
+      toast.success("Account created successfully! Please log in.");
       await auth.signOut();
       setSuccess(true);
 
       setTimeout(() => {
         navigate("/login");
       }, 3000);
-    } catch (error: any) {
-      console.error(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      } else {
+        console.error("An unknown error occurred during signup.");
+      }
     }
   }
 
@@ -87,7 +96,7 @@ export default function Signup() {
             <div className="absolute top-6 right-8 text-2xl transition-all duration-300">
               {isPasswordFocused ? "🙈" : "🐵"}
             </div>
-            
+
             <CardTitle className="text-3xl font-bold text-white tracking-tight">
               Create Account
             </CardTitle>
@@ -107,23 +116,37 @@ export default function Signup() {
                 >
                   {/* Full Name */}
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-slate-200 ml-1">Full Name</Label>
+                    <Label className="text-sm font-medium text-slate-200 ml-1">
+                      Full Name
+                    </Label>
                     <div className="relative">
-                      <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                      <User
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
+                        size={18}
+                      />
                       <Input
                         placeholder="John Doe"
                         {...register("fName")}
                         className="h-12 pl-12 bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:ring-orange-500 rounded-xl transition-all"
                       />
                     </div>
-                    {errors.fName && <p className="text-xs text-red-400 ml-1">{errors.fName.message}</p>}
+                    {errors.fName && (
+                      <p className="text-xs text-red-400 ml-1">
+                        {errors.fName.message}
+                      </p>
+                    )}
                   </div>
 
                   {/* Email */}
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-slate-200 ml-1">Email Address</Label>
+                    <Label className="text-sm font-medium text-slate-200 ml-1">
+                      Email Address
+                    </Label>
                     <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                      <Mail
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
+                        size={18}
+                      />
                       <Input
                         type="email"
                         placeholder="name@example.com"
@@ -131,35 +154,48 @@ export default function Signup() {
                         className="h-12 pl-12 bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:ring-orange-500 rounded-xl transition-all"
                       />
                     </div>
-                    {errors.email && <p className="text-xs text-red-400 ml-1">{errors.email.message}</p>}
+                    {errors.email && (
+                      <p className="text-xs text-red-400 ml-1">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
 
                   {/* Passwords Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium text-slate-200 ml-1">Password</Label>
+                      <Label className="text-sm font-medium text-slate-200 ml-1">
+                        Password
+                      </Label>
                       <Input
                         type="password"
                         placeholder="••••••"
                         onFocus={() => setIsPasswordFocused(true)}
-                        {...register("password", { onBlur: () => setIsPasswordFocused(false) })}
+                        {...register("password", {
+                          onBlur: () => setIsPasswordFocused(false),
+                        })}
                         className="h-12 bg-white/5 border-white/10 text-white focus:ring-orange-500 rounded-xl transition-all"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium text-slate-200 ml-1">Confirm</Label>
+                      <Label className="text-sm font-medium text-slate-200 ml-1">
+                        Confirm
+                      </Label>
                       <Input
                         type="password"
                         placeholder="••••••"
                         onFocus={() => setIsPasswordFocused(true)}
-                        {...register("confirmPassword", { onBlur: () => setIsPasswordFocused(false) })}
+                        {...register("confirmPassword", {
+                          onBlur: () => setIsPasswordFocused(false),
+                        })}
                         className="h-12 bg-white/5 border-white/10 text-white focus:ring-orange-500 rounded-xl transition-all"
                       />
                     </div>
                   </div>
                   {(errors.password || errors.confirmPassword) && (
                     <p className="text-xs text-red-400 ml-1">
-                      {errors.password?.message || errors.confirmPassword?.message}
+                      {errors.password?.message ||
+                        errors.confirmPassword?.message}
                     </p>
                   )}
 
@@ -181,7 +217,10 @@ export default function Signup() {
 
                   <p className="text-center text-sm text-slate-500 pt-2">
                     Already have an account?{" "}
-                    <Link to="/login" className="text-orange-500 font-bold hover:underline underline-offset-4">
+                    <Link
+                      to="/login"
+                      className="text-orange-500 font-bold hover:underline underline-offset-4"
+                    >
                       Log in
                     </Link>
                   </p>
@@ -196,8 +235,12 @@ export default function Signup() {
                   <div className="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle size={40} />
                   </div>
-                  <h3 className="text-xl font-bold text-white">Account Created!</h3>
-                  <p className="text-slate-400">Redirecting you to the login page...</p>
+                  <h3 className="text-xl font-bold text-white">
+                    Account Created!
+                  </h3>
+                  <p className="text-slate-400">
+                    Redirecting you to the login page...
+                  </p>
                 </motion.div>
               )}
             </AnimatePresence>
