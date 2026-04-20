@@ -15,21 +15,25 @@ import DashboardLoading from "../components/ui/DashboardLoading";
 export interface userData {
   name: string;
   email: string;
+  role:string;
   createdAt: Date;
 }
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState<userData | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
+  // signup logic
   const signup = (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  // login logic
   const login = async (email: string, password: string) => {
     const userCred = await signInWithEmailAndPassword(auth, email, password);
 
-    const approvedUser = await getDoc(doc(db, "admin", userCred.user.uid));
+    const approvedUser = await getDoc(doc(db, "users", userCred.user.uid));
 
     if (!approvedUser.exists()) {
       await signOut(auth);
@@ -39,19 +43,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return userCred;
   };
 
+  // logout logic
   const logout = () => {
     return signOut(auth);
   };
+
+  
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
         // check the admin
-        const approvedUser = await getDoc(doc(db, "admin", currentUser.uid));
+        const approvedUser = await getDoc(doc(db, "users", currentUser.uid));
         if (approvedUser.exists()) {
           const data = approvedUser.data() as userData;
           setUserData(data);
+          if(data.role === "admin") {
+            setIsAdmin(true);
+          }
         } else {
           setUserData(null);
         }
@@ -64,15 +74,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return unsubscribe;
   }, []);
 
-  const value = { user, userData, loading, signup, logout, login };
+  const value = { user, userData, loading, signup, logout, login, isAdmin };
+  // const value = { user, userData, loading, signup, logout, login };
 
   return (
     <AuthContext.Provider value={value}>
-      {loading ? (
-        <DashboardLoading/>
-      ) : (
-        children
-      )}
+      {loading ? <DashboardLoading /> : children}
     </AuthContext.Provider>
   );
 }

@@ -52,14 +52,15 @@ export default function Signup() {
       const userCred = await signup(data.email, data.password);
       const user = userCred.user;
 
-      const targetCollection =
+      const role =
         data.email === AdminEmail || data.email === "maryamelsheikh1@gmail.com"
           ? "admin"
           : "pending-users";
 
-      await setDoc(doc(db, targetCollection, user.uid), {
+      await setDoc(doc(db, "users", user.uid), {
         name: data.fName,
         email: data.email,
+        role:role,
         createdAt: new Date(),
       });
       console.log("User document created in Firestore");

@@ -20,7 +20,7 @@ import { db, auth } from "../lib/firebase";
 import { motion } from "framer-motion";
 
 const loginSchema = z.object({
-  email: z.string().email("Please enter a valid email"),
+  email: z.email("Please enter a valid email"),
   password: z.string().min(1, "Please enter your password"),
 });
 
@@ -43,9 +43,9 @@ export default function Login() {
     try {
       const userCred = await login(data.email, data.password);
       const user = userCred.user;
-      const approvedUser = doc(db, "admin", user.uid);
+      const approvedUser = doc(db, "users", user.uid);
       const approveSnap = await getDoc(approvedUser);
-      
+      console.log(approveSnap.data());
       if (approveSnap.exists()) {
         navigate("/dashboard");
       } else {

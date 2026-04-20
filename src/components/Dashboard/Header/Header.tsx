@@ -20,7 +20,7 @@ const publicKey = import.meta.env.VITE_IK_PUBLIC_KEY;
 const urlEndpoint = import.meta.env.VITE_IK_URL_ENDPOINT;
 
 export default function Header({ portfolioType }: { portfolioType: string }) {
-  const { userData, logout } = useAuth(); // Using userData for the name
+  const { userData, logout, isAdmin } = useAuth(); // Using userData for the name
 
   const [ids, setIds] = useState({ portfolioId: "", headerDocId: "" });
   const [headerData, setHeaderData] = useState<{ avatarUrl: string } | null>(
@@ -71,7 +71,7 @@ export default function Header({ portfolioType }: { portfolioType: string }) {
       );
       await updateDoc(headerRef, { avatarUrl: res.url });
       setHeaderData(() => ({ avatarUrl: res.url }));
-      toast.success('Avatar Has Been Change Successfully')
+      toast.success("Avatar Has Been Change Successfully");
     } catch (e) {
       console.error("Firestore Update Error:", e);
     } finally {
@@ -79,8 +79,7 @@ export default function Header({ portfolioType }: { portfolioType: string }) {
     }
   };
 
-  if (loading) return <AdminHeaderSkeleton/>;
-
+  if (loading) return <AdminHeaderSkeleton />;
   return (
     <IKContext
       publicKey={publicKey}
@@ -92,16 +91,17 @@ export default function Header({ portfolioType }: { portfolioType: string }) {
           {/* LEFT: Identity & Branding */}
           <div className="flex items-center gap-5">
             <div className="relative group/avatar">
-              <IKUpload
-                fileName={`avatar-${portfolioType}.png`}
-                folder="/admin-headers"
-                onUploadStart={() => setIsUploading(true)}
-                onSuccess={handleUploadSuccess}
-                onError={() => setIsUploading(false)}
-                className="hidden"
-                id="header-avatar-upload"
-              />
-
+              {isAdmin && (
+                <IKUpload
+                  fileName={`avatar-${portfolioType}.png`}
+                  folder="/admin-headers"
+                  onUploadStart={() => setIsUploading(true)}
+                  onSuccess={handleUploadSuccess}
+                  onError={() => setIsUploading(false)}
+                  className="hidden"
+                  id="header-avatar-upload"
+                />
+              )}
               <label
                 htmlFor="header-avatar-upload"
                 className="cursor-pointer block relative"
