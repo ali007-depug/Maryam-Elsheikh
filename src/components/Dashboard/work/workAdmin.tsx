@@ -23,6 +23,7 @@ import { IKContext } from "imagekitio-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { authenticator } from "../../../lib/imagekit";
 import { toast } from "sonner";
+import { useAuth } from "../../../context/Auth";
 // ImageKit Credentials
 const publicKey = import.meta.env.VITE_IK_PUBLIC_KEY;
 const urlEndpoint = import.meta.env.VITE_IK_URL_ENDPOINT;
@@ -45,6 +46,8 @@ export default function WorkAdmin({
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+
+  const {isAdmin} = useAuth()
 
   useEffect(() => {
     async function getWorkData() {
@@ -191,7 +194,7 @@ export default function WorkAdmin({
                 >
                   <Button
                     onClick={handleSave}
-                    disabled={isSaving}
+                    disabled={isSaving && isAdmin ? false : true}
                     className="bg-green-600  hover:bg-green-500 text-white font-black uppercase tracking-widest text-[10px] h-11 px-8 rounded-2xl shadow-xl shadow-orange-950/20"
                   >
                     {isSaving ? (

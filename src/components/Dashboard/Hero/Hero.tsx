@@ -8,11 +8,13 @@ import HeroContent from "./HeroContent";
 import { Select } from "../../ui/Select";
 import { LayoutDashboard } from "lucide-react";
 import type { ComponentProps } from "../../../types/ComponetTypes";
+import { useAuth } from "../../../context/Auth";
 
 export default function HeroAdmin({
   portfolioType,
   handlePortfolioTypeChange,
 }: ComponentProps) {
+  const {isAdmin} = useAuth()
   return (
     <section className="max-w-10xl mx-auto p-4 relative top-20 md:p-10 space-y-8 bg-[#020617] min-h-screen text-slate-200">
       {/* --- TOP CONTROL PANEL --- */}
@@ -41,7 +43,7 @@ export default function HeroAdmin({
         </div>
       </div>
 
-      <HeroContent portfolioType={portfolioType} />
+      <HeroContent portfolioType={portfolioType} isAdmin={isAdmin} />
     </section>
   );
 }

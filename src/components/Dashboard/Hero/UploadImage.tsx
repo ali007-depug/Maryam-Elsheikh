@@ -14,12 +14,14 @@ interface Props {
   ids: { portfolioId: string; heroId: string };
   currentImg?: string; // Add the current image as a prop
   onUploadSuccess: (url: string) => void;
+  isAdmin: boolean;
 }
 
 export default function ImageKitManager({
   ids,
   onUploadSuccess,
   currentImg,
+  isAdmin,
 }: Props) {
   const [isUploading, setIsUploading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState(currentImg);
@@ -89,22 +91,23 @@ export default function ImageKitManager({
               automatically.
             </p>
           </div>
-
           <IKContext
             publicKey={publicKey}
             urlEndpoint={urlEndpoint}
             authenticator={authenticator}
           >
             <div className="relative">
-              <IKUpload
-                fileName={`hero-${ids.portfolioId}.png`}
-                useUniqueFileName={true}
-                onError={() => setIsUploading(false)}
-                onSuccess={onSuccess}
-                onUploadStart={() => setIsUploading(true)}
-                className="hidden"
-                id="ik-upload"
-              />
+              {isAdmin && (
+                <IKUpload
+                  fileName={`hero-${ids.portfolioId}.png`}
+                  useUniqueFileName={true}
+                  onError={() => setIsUploading(false)}
+                  onSuccess={onSuccess}
+                  onUploadStart={() => setIsUploading(true)}
+                  className="hidden"
+                  id="ik-upload"
+                />
+              )}
 
               <label
                 htmlFor="ik-upload"

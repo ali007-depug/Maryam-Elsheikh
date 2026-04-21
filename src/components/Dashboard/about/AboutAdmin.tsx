@@ -28,6 +28,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import { toast } from "sonner";
+import { useAuth } from "../../../context/Auth";
 
 interface CardsProps {
   icon: IconName | string;
@@ -50,6 +51,8 @@ export default function AboutAdmin({
   const [cards, setCards] = useState<CardsProps[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [markdownValue, setMarkdownValue] = useState("");
+
+  const {isAdmin} = useAuth();
 
   const theme = {
     bgText:
@@ -184,6 +187,7 @@ export default function AboutAdmin({
                    setMarkdownValue(aboutParas.join("\n\n"));
                    setIsEditing(false);
                 }}
+                isAdmin={isAdmin}
               />
             </div>
           )}
@@ -213,6 +217,7 @@ export default function AboutAdmin({
                       newCards[idx] = { ...newCards[idx], ...updated };
                       setCards(newCards);
                     }}
+                    isAdmin={isAdmin}
                   />
                   <Button
                     variant="ghost"
@@ -229,6 +234,7 @@ export default function AboutAdmin({
             {cards.length < 4 && (
               <button
                 onClick={handleAddCard}
+                disabled={isAdmin ? false : true}
                 className={`h-[180px] flex flex-col items-center justify-center border-2 border-dashed border-slate-800 rounded-[2rem] hover:bg-white/5 transition-all text-slate-600 ${portfolioType === "Chemical Engineer" ? "hover:border-sky-500" : "hover:border-orange-500"}`}
               >
                 <Plus size={32} />
@@ -243,7 +249,7 @@ export default function AboutAdmin({
         <div className="flex justify-center mt-12 border-t border-white/5 pt-10">
           <Button
             onClick={handleSaveAll}
-            disabled={isSaving}
+            disabled={isSaving && isAdmin ? false : true}
             className={`text-white h-12 px-12 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all ${theme.button}`}
           >
             {isSaving ? <Loader2 className="animate-spin w-4 h-4 mr-2" /> : <Save size={16} className="mr-2" />}

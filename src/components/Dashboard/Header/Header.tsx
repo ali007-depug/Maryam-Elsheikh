@@ -140,7 +140,7 @@ export default function Header({ portfolioType }: { portfolioType: string }) {
                 <div className="flex items-center gap-1 bg-orange-500/10 px-1.5 py-0.5 rounded border border-orange-500/20">
                   <Zap size={10} className="text-orange-500 fill-orange-500" />
                   <span className="text-[8px] font-black text-orange-500 uppercase">
-                    Admin
+                    {isAdmin ? "Admin":"Guest"}
                   </span>
                 </div>
               </div>

@@ -1,5 +1,11 @@
 import { IconHandler, type IconName } from "../../AboutMe/IconsHandler"; // Import your existing handler
-import { Dialog, DialogClose, DialogContent, DialogFooter, DialogTrigger } from "../../ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogTrigger,
+} from "../../ui/dialog";
 import { Input } from "../../ui/input";
 import { Label } from "@radix-ui/react-label";
 import { Textarea } from "../../ui/textarea";
@@ -25,12 +31,13 @@ interface IconEditorProps {
   currentColor: string;
   currentSize: number;
   currentTitle: string;
+  isAdmin?: boolean;
   onUpdate: (data: {
     icon: string;
     text: string;
     iconColor: string;
     size: number;
-    title:string,
+    title: string;
   }) => void;
 }
 
@@ -41,6 +48,7 @@ export default function IconEditor({
   currentSize,
   currentTitle,
   onUpdate,
+  isAdmin,
 }: IconEditorProps) {
   return (
     <div className="p-4 border rounded-xl bg-slate-50 space-y-4 shadow-sm">
@@ -54,21 +62,20 @@ export default function IconEditor({
             Live Changes
           </p>
         </div>
-                      <Input
-                value={currentTitle}
-                placeholder="e.g. 2+ Years"
-                onChange={(e) =>
-                  onUpdate({
-                    icon: currentIcon,
-                    text: currentText,
-                    iconColor: currentColor,
-                    size: currentSize,
-                    title:e.target.value,
-                  })
-                }
-                className="h-9 text-xs"
-              />
-
+        <Input
+          value={currentTitle}
+          placeholder="e.g. 2+ Years"
+          onChange={(e) =>
+            onUpdate({
+              icon: currentIcon,
+              text: currentText,
+              iconColor: currentColor,
+              size: currentSize,
+              title: e.target.value,
+            })
+          }
+          className="h-9 text-xs"
+        />
       </div>
 
       <div className="flex gap-4">
@@ -85,7 +92,7 @@ export default function IconEditor({
                 text: currentText,
                 iconColor: currentColor,
                 size: currentSize,
-                title:currentTitle
+                title: currentTitle,
               })
             }
             className="w-full  h-9 rounded-md border border-slate-200 bg-white px-3 py-1 text-xs shadow-sm focus:outline-none focus:ring-1 focus:ring-orange-500"
@@ -113,7 +120,7 @@ export default function IconEditor({
                   text: currentText,
                   iconColor: e.target.value,
                   size: currentSize,
-                  title:currentTitle
+                  title: currentTitle,
                 })
               }
               className="w-10 h-9 p-1 cursor-pointer"
@@ -127,7 +134,7 @@ export default function IconEditor({
                   text: currentText,
                   iconColor: e.target.value,
                   size: currentSize,
-                  title:currentTitle,
+                  title: currentTitle,
                 })
               }
               className="h-9 text-[10px] font-mono"
@@ -151,50 +158,47 @@ export default function IconEditor({
                 text: currentText,
                 iconColor: currentColor,
                 size: parseInt(e.target.value),
-                title:currentTitle,
+                title: currentTitle,
               })
             }
             className="h-9 cursor-pointer accent-orange-600"
           />
         </div>
-
       </div>
-              {/* TEXT CONTENT */}
-        <div className="space-y-1.5">
-          <p className="overflow-ellipsis w-100">{currentText}</p>
+      {/* TEXT CONTENT */}
+      <div className="space-y-1.5">
+        <p className="overflow-ellipsis w-100">{currentText}</p>
 
-          <Dialog>
-            <DialogTrigger className="text-bold text-white p-1.5 bg-black/70 hover:bg-black cursor-pointer rounded">
-              Edit Text
-            </DialogTrigger>
-            <DialogContent>
-              <Textarea
-                value={currentText}
-                placeholder="e.g. 2+ Years"
-                onChange={(e) =>
-                  onUpdate({
-                    icon: currentIcon,
-                    text: e.target.value,
-                    iconColor: currentColor,
-                    size: currentSize,
-                    title:currentTitle,
-                  })
-                }
-                className="h-9 text-xs"
-              />
+        <Dialog>
+          <DialogTrigger className="text-bold text-white p-1.5 bg-black/70 hover:bg-black cursor-pointer rounded">
+            Edit Text
+          </DialogTrigger>
+          <DialogContent>
+            <Textarea
+              value={currentText}
+              placeholder="e.g. 2+ Years"
+              onChange={
+                isAdmin
+                  ? (e) =>
+                      onUpdate({
+                        icon: currentIcon,
+                        text: e.target.value,
+                        iconColor: currentColor,
+                        size: currentSize,
+                        title: currentTitle,
+                      })
+                  : undefined
+              }
+              className="h-9 text-xs"
+            />
             <DialogFooter>
-
-            <DialogClose asChild>
-              <Button variant={"outline"}>
-                Close
-                </Button>
-            </DialogClose>
+              <DialogClose asChild>
+                <Button variant={"outline"}>Close</Button>
+              </DialogClose>
             </DialogFooter>
-            </DialogContent>
-
-          </Dialog>
-        </div>
-
+          </DialogContent>
+        </Dialog>
+      </div>
     </div>
   );
 }

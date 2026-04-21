@@ -23,6 +23,7 @@ export default function WorkCardEditor({
   isEditing,
   onUpdate,
   index,
+  
 }: WorkCardEditorProps) {
   const [uploading, setUploading] = useState(false);
 

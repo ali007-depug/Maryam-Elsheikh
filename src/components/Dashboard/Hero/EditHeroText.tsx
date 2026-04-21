@@ -29,11 +29,13 @@ export default function EditHeroText({
   onChange,
   onSave,
   onCancel,
+  isAdmin
 }: {
   value: string;
   onChange: (v: string) => void;
   onSave: () => void;
   onCancel: () => void;
+  isAdmin: boolean;
 }) {
   const [showPreview, setShowPreview] = useState(false);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -49,7 +51,11 @@ export default function EditHeroText({
     const afterText = value.substring(end);
 
     let finalPrefix = prefix;
-    if (prefix === "* " && beforeText.length > 0 && !beforeText.endsWith("\n")) {
+    if (
+      prefix === "* " &&
+      beforeText.length > 0 &&
+      !beforeText.endsWith("\n")
+    ) {
       finalPrefix = `\n${prefix}`;
     }
 
@@ -69,18 +75,46 @@ export default function EditHeroText({
       <div className="flex flex-wrap justify-between items-center gap-4">
         <div className="flex items-center gap-2 bg-slate-900/80 p-1 rounded-2xl border border-white/5 backdrop-blur-md">
           <div className="flex border-r border-white/10 pr-2 mr-1">
-            <ToolbarButton icon={<Heading1 size={14} />} onClick={() => injectMarkdown("# ")} label="H1" />
-            <ToolbarButton icon={<Heading2 size={14} />} onClick={() => injectMarkdown("## ")} label="H2" />
-            <ToolbarButton icon={<Heading3 size={14} />} onClick={() => injectMarkdown("### ")} label="H3" />
+            <ToolbarButton
+              icon={<Heading1 size={14} />}
+              onClick={() => injectMarkdown("# ")}
+              label="H1"
+            />
+            <ToolbarButton
+              icon={<Heading2 size={14} />}
+              onClick={() => injectMarkdown("## ")}
+              label="H2"
+            />
+            <ToolbarButton
+              icon={<Heading3 size={14} />}
+              onClick={() => injectMarkdown("### ")}
+              label="H3"
+            />
           </div>
 
           <div className="flex border-r border-white/10 pr-2 mr-1">
-            <ToolbarButton icon={<Bold size={14} />} onClick={() => injectMarkdown("**", "**")} label="Bold" />
-            <ToolbarButton icon={<Italic size={14} />} onClick={() => injectMarkdown("_", "_")} label="Italic" />
+            <ToolbarButton
+              icon={<Bold size={14} />}
+              onClick={() => injectMarkdown("**", "**")}
+              label="Bold"
+            />
+            <ToolbarButton
+              icon={<Italic size={14} />}
+              onClick={() => injectMarkdown("_", "_")}
+              label="Italic"
+            />
           </div>
 
-          <ToolbarButton icon={<List size={14} />} onClick={() => injectMarkdown("* ")} label="Bullet List" />
-          <ToolbarButton icon={<Type size={14} />} onClick={() => injectMarkdown("<small>", "</small>")} label="Small text" />
+          <ToolbarButton
+            icon={<List size={14} />}
+            onClick={() => injectMarkdown("* ")}
+            label="Bullet List"
+          />
+          <ToolbarButton
+            icon={<Type size={14} />}
+            onClick={() => injectMarkdown("<small>", "</small>")}
+            label="Small text"
+          />
         </div>
 
         <Button
@@ -90,9 +124,13 @@ export default function EditHeroText({
           onClick={() => setShowPreview(!showPreview)}
         >
           {showPreview ? (
-            <><EyeOff className="w-3 h-3 mr-2" /> Editor</>
+            <>
+              <EyeOff className="w-3 h-3 mr-2" /> Editor
+            </>
           ) : (
-            <><Eye className="w-3 h-3 mr-2" /> Preview</>
+            <>
+              <Eye className="w-3 h-3 mr-2" /> Preview
+            </>
           )}
         </Button>
       </div>
@@ -121,12 +159,14 @@ export default function EditHeroText({
 
       {/* --- ACTIONS --- */}
       <div className="flex flex-col sm:flex-row gap-4 pt-4">
-        <Button
-          onClick={onSave}
-          className="bg-green-600 hover:bg-green-500 text-white hover:text-black font-black uppercase tracking-widest text-[10px] h-14 px-10 rounded-2xl cursor-pointer shadow-xl shadow-orange-950/20 transition-all active:scale-95 group"
-        >
-          <Save className="w-4 h-4 mr-2 group-hover:animate-bounce" /> Save Changes
-        </Button>
+          <Button
+            onClick={isAdmin ? onSave : undefined}
+            disabled={isAdmin ? false : true}
+            className="bg-green-600 hover:bg-green-500 text-white hover:text-black font-black uppercase tracking-widest text-[10px] h-14 px-10 rounded-2xl cursor-pointer shadow-xl shadow-orange-950/20 transition-all active:scale-95 group"
+          >
+            <Save className="w-4 h-4 mr-2 group-hover:animate-bounce" /> Save
+            Changes
+          </Button>
         <Button
           variant="ghost"
           onClick={onCancel}
@@ -139,7 +179,15 @@ export default function EditHeroText({
   );
 }
 
-function ToolbarButton({ icon, onClick, label }: { icon: React.ReactNode; onClick: () => void; label: string }) {
+function ToolbarButton({
+  icon,
+  onClick,
+  label,
+}: {
+  icon: React.ReactNode;
+  onClick: () => void;
+  label: string;
+}) {
   return (
     <button
       type="button"

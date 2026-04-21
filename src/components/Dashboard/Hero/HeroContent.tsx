@@ -21,8 +21,10 @@ import { toast } from "sonner";
 
 export default function HeroContent({
   portfolioType,
+  isAdmin
 }: {
   portfolioType: string;
+  isAdmin: boolean;
 }) {
   const [description, setDescription] = useState("");
   const [isEditing, setIsEditing] = useState(false);
@@ -128,6 +130,7 @@ export default function HeroContent({
               onChange={setTextAreaValue}
               onSave={saveToFirebase}
               onCancel={() => setIsEditing(false)}
+              isAdmin={isAdmin}
             />
           </div>
         )}
@@ -166,13 +169,15 @@ export default function HeroContent({
             </span>
           </div>
         </div>
-
+        
+        
         {/* Upload Manager (Customized via Props or CSS in the component itself) */}
         <div className="bg-slate-900/40 p-2 rounded-[2rem] border border-white/5">
           <ImageKitManager
             ids={ids}
             onUploadSuccess={(url) => setHeroImg(url)}
             currentImg={heroImg}
+            isAdmin={isAdmin}
           />
         </div>
       </div>
