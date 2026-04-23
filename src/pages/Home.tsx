@@ -21,8 +21,8 @@ export default function Home() {
       setFadeOut(true); // trigger fade-out
       setTimeout(() => {
         setIsLoading(false); // remove loader
-      }, 200); // matches CSS transition
-    }, 1500);
+      }, 100); // matches CSS transition
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -34,7 +34,7 @@ export default function Home() {
   if (isLoading) {
     return (
       <div
-        className={`fixed inset-0 flex flex-col items-center justify-center bg-gray-900 text-white transition-opacity duration-300 ${
+        className={`fixed inset-0 flex flex-col items-center justify-center bg-gray-900 text-white transition-opacity duration-100 ${
           fadeOut ? "opacity-0" : "opacity-100"
         }`}
       >
