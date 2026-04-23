@@ -68,116 +68,82 @@ export default function EditHeroText({
       el.setSelectionRange(start + cursorOffset, end + cursorOffset);
     }, 10);
   };
-
-  return (
-    <div className="space-y-6">
+return (
+    <div className="w-full space-y-4 md:space-y-6 overflow-hidden">
       {/* --- TOOLBAR --- */}
-      <div className="flex flex-wrap justify-between items-center gap-4">
-        <div className="flex items-center gap-2 bg-slate-900/80 p-1 rounded-2xl border border-white/5 backdrop-blur-md">
-          <div className="flex border-r border-white/10 pr-2 mr-1">
-            <ToolbarButton
-              icon={<Heading1 size={14} />}
-              onClick={() => injectMarkdown("# ")}
-              label="H1"
-            />
-            <ToolbarButton
-              icon={<Heading2 size={14} />}
-              onClick={() => injectMarkdown("## ")}
-              label="H2"
-            />
-            <ToolbarButton
-              icon={<Heading3 size={14} />}
-              onClick={() => injectMarkdown("### ")}
-              label="H3"
-            />
-          </div>
+      <div className="flex flex-col gap-3">
+        {/* Scrollable Container for Icons */}
+        <div className="w-full overflow-x-auto no-scrollbar bg-slate-900/80 p-1.5 rounded-xl border border-white/5 backdrop-blur-md">
+          <div className="flex items-center gap-1 min-w-max">
+            <div className="flex border-r border-white/10 pr-1 mr-1">
+              <ToolbarButton icon={<Heading1 size={14} />} onClick={() => injectMarkdown("# ")} label="H1" />
+              <ToolbarButton icon={<Heading2 size={14} />} onClick={() => injectMarkdown("## ")} label="H2" />
+              <ToolbarButton icon={<Heading3 size={14} />} onClick={() => injectMarkdown("### ")} label="H3" />
+            </div>
 
-          <div className="flex border-r border-white/10 pr-2 mr-1">
-            <ToolbarButton
-              icon={<Bold size={14} />}
-              onClick={() => injectMarkdown("**", "**")}
-              label="Bold"
-            />
-            <ToolbarButton
-              icon={<Italic size={14} />}
-              onClick={() => injectMarkdown("_", "_")}
-              label="Italic"
-            />
-          </div>
+            <div className="flex border-r border-white/10 pr-1 mr-1">
+              <ToolbarButton icon={<Bold size={14} />} onClick={() => injectMarkdown("**", "**")} label="B" />
+              <ToolbarButton icon={<Italic size={14} />} onClick={() => injectMarkdown("_", "_")} label="I" />
+            </div>
 
-          <ToolbarButton
-            icon={<List size={14} />}
-            onClick={() => injectMarkdown("* ")}
-            label="Bullet List"
-          />
-          <ToolbarButton
-            icon={<Type size={14} />}
-            onClick={() => injectMarkdown("<small>", "</small>")}
-            label="Small text"
-          />
+            <div className="flex items-center">
+              <ToolbarButton icon={<List size={14} />} onClick={() => injectMarkdown("* ")} label="Bullet" />
+              <ToolbarButton icon={<Type size={14} />} onClick={() => injectMarkdown("<small>", "</small>")} label="Small" />
+            </div>
+          </div>
         </div>
 
+        {/* Action Toggles */}
         <Button
           variant="ghost"
           size="sm"
-          className="h-10 px-4 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-orange-500 bg-white/5 rounded-xl border border-white/5"
+          className="w-full h-10 px-4 text-[10px] font-black uppercase tracking-widest text-slate-400 bg-white/5 rounded-xl border border-white/5"
           onClick={() => setShowPreview(!showPreview)}
         >
-          {showPreview ? (
-            <>
-              <EyeOff className="w-3 h-3 mr-2" /> Editor
-            </>
-          ) : (
-            <>
-              <Eye className="w-3 h-3 mr-2" /> Preview
-            </>
-          )}
+          {showPreview ? <><EyeOff className="w-3 h-3 mr-2" /> Editor</> : <><Eye className="w-3 h-3 mr-2" /> Preview</>}
         </Button>
       </div>
 
       {/* --- CONTENT AREA --- */}
-      {!showPreview ? (
-        <div className="relative group">
+      <div className="w-full">
+        {!showPreview ? (
           <Textarea
             ref={textAreaRef}
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            // whitespace-pre-wrap ensures the editor shows the breaks you type
-            className="min-h-[380px] font-mono text-sm leading-relaxed p-8 bg-slate-950 border-slate-800 text-slate-300 rounded-[2.5rem] focus-visible:ring-orange-500 shadow-inner whitespace-pre-wrap"
+            className="w-full min-h-[250px] md:min-h-[380px] font-mono text-sm leading-relaxed p-4 md:p-8 bg-slate-950 border-slate-800 text-slate-300 rounded-xl md:rounded-[2.5rem] focus-visible:ring-orange-500 overflow-x-hidden"
             placeholder="Type your content here..."
           />
-        </div>
-      ) : (
-        <div className="min-h-[380px] p-8 bg-slate-900/50 border border-white/5 rounded-[2.5rem] shadow-inner overflow-y-auto animate-in fade-in duration-300">
-          <div className="prose prose-invert prose-orange max-w-none whitespace-pre-wrap">
-            <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
-              {value}
-            </ReactMarkdown>
+        ) : (
+          <div className="w-full min-h-[250px] md:min-h-[380px] p-4 md:p-8 bg-slate-900/50 border border-white/5 rounded-xl md:rounded-[2.5rem] overflow-x-hidden overflow-y-auto">
+            <div className="prose prose-sm md:prose-base prose-invert prose-orange max-w-full break-words">
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+                {value}
+              </ReactMarkdown>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* --- ACTIONS --- */}
-      <div className="flex flex-col sm:flex-row gap-4 pt-4">
-          <Button
-            onClick={isAdmin ? onSave : undefined}
-            disabled={isAdmin ? false : true}
-            className="bg-green-600 hover:bg-green-500 text-white hover:text-black font-black uppercase tracking-widest text-[10px] h-14 px-10 rounded-2xl cursor-pointer shadow-xl shadow-orange-950/20 transition-all active:scale-95 group"
-          >
-            <Save className="w-4 h-4 mr-2 group-hover:animate-bounce" /> Save
-            Changes
-          </Button>
+      <div className="flex flex-col xs:flex-row gap-3 pt-2">
+        <Button
+          onClick={onSave}
+          disabled={!isAdmin}
+          className="w-full xs:flex-1 bg-green-600 text-white font-black uppercase tracking-widest text-[10px] h-12 md:h-14 rounded-xl"
+        >
+          <Save className="w-4 h-4 mr-2" /> Save Changes
+        </Button>
         <Button
           variant="ghost"
           onClick={onCancel}
-          className="text-slate-500 hover:text-white cursor-pointer hover:bg-white/5 font-black uppercase tracking-widest text-[10px] h-14 px-10 rounded-2xl border border-white/5"
+          className="w-full xs:w-auto text-slate-500 font-black uppercase tracking-widest text-[10px] h-12 md:h-14 px-8 rounded-xl border border-white/5"
         >
           <X className="w-4 h-4 mr-2" /> Cancel
         </Button>
       </div>
     </div>
-  );
-}
+  );}
 
 function ToolbarButton({
   icon,
