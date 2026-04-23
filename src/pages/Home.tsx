@@ -1,4 +1,4 @@
-import { useState, useEffect, type ChangeEvent } from "react";
+import { useState, useEffect, type ChangeEvent, lazy } from "react";
 
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
@@ -7,7 +7,7 @@ import WorkExperience from "../components/Work/WorkExperience";
 import Gallary from "../components/Gallary/Gallary";
 import FloatingSelect from "../components/FloatingSelect";
 import ContactMe from "../components/Contact/ContactMe";
-import Footer from "../components/ui/Footer";
+const Footer = lazy(() => import("../components/ui/Footer"));
 export default function Home() {
   const [portfolioType, setPortfolioType] = useState<
     "Chemical Engineer" | "Content Writer"
@@ -68,10 +68,7 @@ export default function Home() {
         portfolioType={portfolioType}
       />
       {/* header */}
-      <Header
-        name="Maryam Elsheikh"
-        portfolioType={portfolioType}
-      />
+      <Header name="Maryam Elsheikh" portfolioType={portfolioType} />
       {/* hero */}
       <Hero
         portfolioType={portfolioType}
@@ -90,7 +87,7 @@ export default function Home() {
       <ContactMe portfolioType={portfolioType} />
 
       {/* footer */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }
