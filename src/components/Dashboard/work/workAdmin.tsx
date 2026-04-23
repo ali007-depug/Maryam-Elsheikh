@@ -113,7 +113,7 @@ export default function WorkAdmin({
       publicKey={publicKey}
       authenticator={authenticator}
     >
-      <section className="relative mx-auto max-w-[1600px] py-20 px-6 sm:px-12 bg-slate-950 backdrop-blur-xl rounded-[3.5rem] border border-white/5 shadow-2xl mt-10 overflow-hidden transition-all duration-500 hover:border-orange-500/10">
+      <section className="relative mx-auto max-w-[1600px] py-20 px-6 sm:px-12 bg-slate-950 backdrop-blur-xl mb-5 border border-white/5 shadow-2xl mt-10 overflow-hidden transition-all duration-500 hover:border-orange-500/10">
         {/* --- CINEMATIC HEADING (Matching About Admin) --- */}
         <div className="relative mb-24 text-center">
           <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 z-0 w-full pointer-events-none">

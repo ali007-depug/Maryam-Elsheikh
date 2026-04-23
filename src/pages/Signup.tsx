@@ -35,7 +35,6 @@ const schema = z
 type FormData = z.infer<typeof schema>;
 
 export default function Signup() {
-  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [success, setSuccess] = useState(false);
   const { signup } = useAuth();
   const navigate = useNavigate();
@@ -60,7 +59,7 @@ export default function Signup() {
       await setDoc(doc(db, "users", user.uid), {
         name: data.fName,
         email: data.email,
-        role:role,
+        role: role,
         createdAt: new Date(),
       });
       console.log("User document created in Firestore");
@@ -80,6 +79,7 @@ export default function Signup() {
     }
   }
 
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] px-4 relative overflow-hidden">
       {/* Background elements to match Login */}
@@ -93,11 +93,6 @@ export default function Signup() {
       >
         <Card className="bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl overflow-hidden">
           <CardHeader className="pt-10 pb-2 text-center relative">
-            {/* The Monkey Easter Egg - Positioned at the top */}
-            <div className="absolute top-6 right-8 text-2xl transition-all duration-300">
-              {isPasswordFocused ? "🙈" : "🐵"}
-            </div>
-
             <CardTitle className="text-3xl font-bold text-white tracking-tight">
               Create Account
             </CardTitle>
@@ -126,7 +121,7 @@ export default function Signup() {
                         size={18}
                       />
                       <Input
-                        placeholder="John Doe"
+                        placeholder="Maryam"
                         {...register("fName")}
                         className="h-12 pl-12 bg-white/5 border-white/10 text-white placeholder:text-slate-600 focus:ring-orange-500 rounded-xl transition-all"
                       />
@@ -171,10 +166,6 @@ export default function Signup() {
                       <Input
                         type="password"
                         placeholder="••••••"
-                        onFocus={() => setIsPasswordFocused(true)}
-                        {...register("password", {
-                          onBlur: () => setIsPasswordFocused(false),
-                        })}
                         className="h-12 bg-white/5 border-white/10 text-white focus:ring-orange-500 rounded-xl transition-all"
                       />
                     </div>
@@ -185,10 +176,6 @@ export default function Signup() {
                       <Input
                         type="password"
                         placeholder="••••••"
-                        onFocus={() => setIsPasswordFocused(true)}
-                        {...register("confirmPassword", {
-                          onBlur: () => setIsPasswordFocused(false),
-                        })}
                         className="h-12 bg-white/5 border-white/10 text-white focus:ring-orange-500 rounded-xl transition-all"
                       />
                     </div>
@@ -215,7 +202,7 @@ export default function Signup() {
                       </>
                     )}
                   </Button>
-
+               
                   <p className="text-center text-sm text-slate-500 pt-2">
                     Already have an account?{" "}
                     <Link

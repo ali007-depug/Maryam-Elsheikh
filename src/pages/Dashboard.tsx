@@ -4,6 +4,7 @@ import Header from "../components/Dashboard/Header/Header";
 import Hero from "../components/Dashboard/Hero/Hero";
 import AboutAdmin from "../components/Dashboard/about/AboutAdmin";
 import WorkAdmin from "../components/Dashboard/work/workAdmin";
+import Footer from "../components/ui/Footer";
 
 export default function Dashboard() {
   const [portfolioType, setPortfolioType] = useState<
@@ -27,6 +28,8 @@ export default function Dashboard() {
       <AboutAdmin portfolioType={portfolioType} />
       {/* work */}
       <WorkAdmin portfolioType={portfolioType} />
+      {/* Footer */}
+      <Footer/>
     </div>
   );
 }

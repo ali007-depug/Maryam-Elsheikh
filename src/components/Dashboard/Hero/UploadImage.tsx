@@ -64,7 +64,7 @@ export default function ImageKitManager({
             <img
               src={`${previewUrl}`}
               alt="Hero Preview"
-              className="w-full h-full object-cover"
+              className={`w-full ${!isAdmin && "blur"} h-full object-cover`}
             />
           ) : (
             <div className="flex flex-col items-center justify-center h-full text-slate-300">

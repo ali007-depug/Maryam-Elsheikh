@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import {
@@ -27,6 +28,7 @@ const loginSchema = z.object({
 type LoginData = z.infer<typeof loginSchema>;
 
 export default function Login() {
+  const [guestLoading, setGuestLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -52,8 +54,33 @@ export default function Login() {
         await signOut(auth);
         setError("root", { message: "Account not approved by admin yet." });
       }
-    } catch (error: any) {
-      setError("root", { message: "Wrong email or password." });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError("root", { message: "Wrong email or password." });
+      }
+    }
+  }
+
+  async function SignAsGuest() {
+    setGuestLoading(true);
+    try {
+      const userCred = await login("boyfor491@gmail.com", "123456");
+      const user = userCred.user;
+      const approvedUser = doc(db, "users", user.uid);
+      const approveSnap = await getDoc(approvedUser);
+      console.log(approveSnap.data());
+      if (approveSnap.exists()) {
+        navigate("/dashboard");
+      } else {
+        await signOut(auth);
+        setError("root", { message: "Account not approved by admin yet." });
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError("root", { message: "Wrong email or password." });
+      }
+    } finally {
+      setGuestLoading(false);
     }
   }
 
@@ -90,7 +117,9 @@ export default function Login() {
 
               {/* Email */}
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-slate-200 ml-1">Email Address</Label>
+                <Label className="text-sm font-medium text-slate-200 ml-1">
+                  Email Address
+                </Label>
                 <Input
                   type="email"
                   placeholder="name@example.com"
@@ -98,15 +127,22 @@ export default function Login() {
                   className="h-12 bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:ring-orange-500 focus:border-orange-500 rounded-xl transition-all"
                 />
                 {errors.email && (
-                  <p className="text-xs text-red-400 ml-1">{errors.email.message}</p>
+                  <p className="text-xs text-red-400 ml-1">
+                    {errors.email.message}
+                  </p>
                 )}
               </div>
 
               {/* Password */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center px-1">
-                  <Label className="text-sm font-medium text-slate-200">Password</Label>
-                  <Link to="#" className="text-xs text-orange-500 hover:text-orange-400 transition-colors font-medium">
+                  <Label className="text-sm font-medium text-slate-200">
+                    Password
+                  </Label>
+                  <Link
+                    to="#"
+                    className="text-xs text-orange-500 hover:text-orange-400 transition-colors font-medium"
+                  >
                     Forgot password?
                   </Link>
                 </div>
@@ -117,7 +153,9 @@ export default function Login() {
                   className="h-12 bg-white/5 border-white/10 text-white focus:ring-orange-500 focus:border-orange-500 rounded-xl transition-all"
                 />
                 {errors.password && (
-                  <p className="text-xs text-red-400 ml-1">{errors.password.message}</p>
+                  <p className="text-xs text-red-400 ml-1">
+                    {errors.password.message}
+                  </p>
                 )}
               </div>
 
@@ -136,15 +174,35 @@ export default function Login() {
                   </>
                 )}
               </Button>
-
               {/* Simple Footer */}
               <p className="text-center text-sm text-slate-500">
                 New here?{" "}
-                <Link to="/signup" className="text-orange-500 font-bold hover:underline underline-offset-4">
+                <Link
+                  to="/signup"
+                  className="text-orange-500 font-bold hover:underline underline-offset-4"
+                >
                   Create an account
                 </Link>
               </p>
             </form>
+            <div className="mt-1 md:mt-3 text-center">
+              <h2 className="text-orange-500 font-bold uppercase">Or</h2>
+              {/* Sign As guest */}
+              <Button
+                onClick={() => SignAsGuest()}
+                disabled={guestLoading}
+                className="w-full h-12 bg-white hover:bg-slate-200 text-orange font-bold text-base rounded-xl shadow-lg shadow-orange-600/20 transition-all flex items-center justify-center gap-2"
+              >
+                {guestLoading ? (
+                  <Loader2 className="animate-spin" size={20} />
+                ) : (
+                  <>
+                    <LogIn size={20} />
+                    Sign As Guest
+                  </>
+                )}
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </motion.div>

@@ -152,7 +152,7 @@ export default function HeroContent({
             className={`absolute w-64 h-64 rounded-full ${styleData?.glowColor || "bg-orange-600"} blur-[100px] pointer-events-none`}
           />
 
-          <div className="relative group">
+          <div className={`relative group ${!isAdmin && 'blur'}`}>
             <div className="absolute inset-0 bg-orange-500 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
             <img
               src={
