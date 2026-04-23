@@ -203,7 +203,6 @@ export default function Hero({
                     alt="Hero profile"
                     className="w-full h-full object-cover rounded-full"
                     loading="eager"
-                    priority
                   />
                 )}
                 {/* </AnimatePresence> */}
