@@ -63,7 +63,8 @@ export default function Hero({
   }, [portfolioType]);
 
   return (
-    <main id="hero"
+    <main
+      id="hero"
       className={`relative w-full min-h-screen pt-20 flex items-center overflow-hidden transition-colors duration-700 ${
         portfolioType === "Chemical Engineer"
           ? "bg-slate-900 text-slate-100"
@@ -158,7 +159,7 @@ export default function Hero({
               </a>
 
               <Button
-              variant={"ghost"}
+                variant={"ghost"}
                 onClick={() => scrollToSection("works")}
                 className=" p-7 bg-white/5 border border-white/10 rounded-2xl flex items-center gap-3 hover:bg-white hover:text-black transition-all text-white backdrop-blur-sm cursor-pointer"
               >
@@ -179,7 +180,9 @@ export default function Hero({
               {/* Dual Pulse Rings */}
 
               {/* Main Image Container */}
-              <div className={`relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 border-4 border-white/10 bg-slate-950/50 backdrop-blur-xl shadow-2xl overflow-hidden ${ portfolioType === 'Chemical Engineer' ? 'group-hover:border-sky-500/50' : 'group-hover:border-orange-500/50'} transition-colors duration-500`}>
+              <div
+                className={`relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 border-4 border-white/10 bg-slate-950/50 backdrop-blur-xl shadow-2xl overflow-hidden ${portfolioType === "Chemical Engineer" ? "group-hover:border-sky-500/50" : "group-hover:border-orange-500/50"} transition-colors duration-500`}
+              >
                 {/* <AnimatePresence mode="wait"> */}
                 {fetching ? (
                   <div
@@ -199,6 +202,8 @@ export default function Hero({
                     src={heroData.heroImg}
                     alt="Hero profile"
                     className="w-full h-full object-cover rounded-full"
+                    loading="eager"
+                    priority
                   />
                 )}
                 {/* </AnimatePresence> */}
